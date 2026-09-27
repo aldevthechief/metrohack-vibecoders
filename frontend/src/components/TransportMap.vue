@@ -224,6 +224,7 @@ defineExpose({ resetView })
 onMounted(async () => {
   await nextTick()
   map = L.map(element.value, { center: [55.7512, 37.6184], zoom: 10, zoomControl: false, scrollWheelZoom: false, preferCanvas: true })
+  map.attributionControl.setPrefix(false)
   L.control.zoom({ position: 'topright' }).addTo(map)
   setTileLayer(yandexKey ? 'yandex' : 'osm')
   overlay = L.layerGroup().addTo(map)
