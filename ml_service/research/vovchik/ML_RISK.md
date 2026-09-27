@@ -1,14 +1,14 @@
 # Риск задержки и объяснения прогноза
 
-Существующий `final_model.cbm` — регрессор поправки к `cur_dev_s`. Новый классификатор использует тот же фиксированный порядок 78 признаков и событие **`target_delay_s > 120`**. Входная телеметрия ограничена одновременно `event_time <= T` и `receive_time <= T`. Будущее плановое расписание допустимо; фактические будущие прибытия и ответы в признаки не входят.
+`final_model.cbm` — регрессор поправки к `cur_dev_s`. Классификатор использует тот же фиксированный порядок 78 признаков и событие **`target_delay_s > 120`**. Входная телеметрия ограничена одновременно `event_time <= T` и `receive_time <= T`. Будущее плановое расписание допустимо; фактические будущие прибытия и ответы в признаки не входят.
 
 ## Запуск
 
-Открыть `unified.ipynb` в корне репозитория и нажать **Run All**. Четвёртая ячейка кода по умолчанию загружает существующий `final_model.cbm`: `RETRAIN_REGRESSOR = False`. Основная модель и корневой `submission.csv` не перезаписываются. Последняя ячейка обучает отдельную модель риска и сохраняет результаты в `ml_artifacts` и `dataset/submission.csv`.
+Из корня репозитория запустить `python ml_service/research/vovchik/train_from_notebook.py`. Он выполняет кодовые ячейки `unified.ipynb` в том же порядке, что **Run All** в Jupyter. По умолчанию `RETRAIN_REGRESSOR = True`: регрессор и классификатор риска обучаются заново. Данные берутся из `dataset/`, результаты сохраняются в `ml_service/research/vovchik/results/`, полный конкурсный файл — в корневом `submission.csv` и `dataset/submission.csv`.
 
-Если готового `final_model.cbm` нет, notebook останавливается с понятной ошибкой, без автоматического переобучения. Для намеренного переобучения основной модели изменить переключатель на `RETRAIN_REGRESSOR = True`: это перезапишет основную модель и корневой submission. Для обычного запуска оставить `False`.
+При `RETRAIN_REGRESSOR = False` notebook загружает регрессор из `results/final_model.cbm` и переобучает только риск. После проверки для запуска сервиса скопировать три файла моделей (`final_model.cbm`, `risk_model.cbm`, `risk_metadata.json`) из `results/` в `ml_service/app/artifacts/` и пересобрать Docker-образ ML-сервиса.
 
-Зависимости: Python 3.13, numpy, pandas >= 2, catboost, scipy, scikit-learn; проверено в существующем Anaconda (pandas 2.3.3, CatBoost 1.2.10, scikit-learn 1.7.2). Отдельный пакет `shap` не нужен.
+Зависимости: Python, numpy, pandas, catboost, scipy, scikit-learn и nbformat. Отдельный пакет `shap` не нужен.
 
 ## Обучение и проверка
 
@@ -32,12 +32,13 @@ Test не участвует в обучении или программном �
 
 ## Результаты
 
-- `ml_artifacts/risk_model.cbm` — отдельный CatBoostClassifier.
-- `ml_artifacts/risk_metadata.json` — порядок признаков, параметры sigmoid, выбранный метод, границы разбиения, SHA-256 файла и отпечаток структуры регрессора.
-- `ml_artifacts/metrics.json` — метрики исходных, sigmoid и выбранных вероятностей, базовый прогноз, интервалы калибровки и матрицы ошибок при пороге 0.5.
-- `ml_artifacts/test_predictions.csv` — фактическая задержка, прогноз, абсолютная ошибка каждого прогноза, событие, исходная и выбранная вероятность.
-- `ml_artifacts/predictions_validate.json` — все 151 прогноза с риском и объяснениями для frontend.
-- `ml_artifacts/submission.csv` и `../../dataset/submission.csv` — полный файл `sample_id;prediction`, ровно 151 строка данных. Проверяются конечность чисел, уникальность и точное покрытие ID шаблона и validate. Риск и SHAP в конкурсный CSV не добавляются.
+- `results/final_model.cbm` — регрессор CatBoost.
+- `results/risk_model.cbm` — отдельный CatBoostClassifier.
+- `results/risk_metadata.json` — порядок признаков, параметры sigmoid, выбранный метод, границы разбиения, SHA-256 файла и отпечаток структуры регрессора.
+- `results/metrics.json` — метрики исходных, sigmoid и выбранных вероятностей, базовый прогноз, интервалы калибровки и матрицы ошибок при пороге 0.5.
+- `results/test_predictions.csv` — фактическая задержка, прогноз, абсолютная ошибка каждого прогноза, событие, исходная и выбранная вероятность.
+- `results/predictions_validate.json` — все 151 прогноза с риском и объяснениями для frontend.
+- `results/submission.csv`, корневой `submission.csv` и `dataset/submission.csv` — полный файл `sample_id;prediction`, ровно 151 строка данных. Проверяются конечность чисел, уникальность и точное покрытие ID шаблона и validate. Риск и SHAP в конкурсный CSV не добавляются.
 
 ## Контракт для frontend
 
@@ -66,9 +67,9 @@ predictionSec = currentDeviationSec + baseValueSec
 ## Использование в backend
 
 ```python
-from ml_risk import load_models, predict_for_frontend
+from ml_service.app.services.ml_risk import load_models, predict_for_frontend
 
-regressor, risk_model, metadata = load_models("ml_artifacts", "final_model.cbm")
+regressor, risk_model, metadata = load_models("ml_service/app/artifacts", "ml_service/app/artifacts/final_model.cbm")
 # feature_frame — результат существующего build_features, с sample_id и всеми 78 признаками.
 # Для одного прогноза можно передать F_validate.iloc[[0]].
 records = predict_for_frontend(regressor, risk_model, metadata, feature_frame)
@@ -76,6 +77,6 @@ records = predict_for_frontend(regressor, risk_model, metadata, feature_frame)
 
 Модели загружать один раз при старте сервиса. Входные колонки переставляются по сохранённому порядку; пропущенная колонка вызывает понятную ошибку. Для онлайн-инференса backend должен собрать ту же полную схему признаков, включая NaN для недоступных числовых значений. Сырые GPS-пакеты эта функция не принимает. Совместимость проверяется по структуре модели (деревья, признаки, категориальные статистики, масштаб и смещение); служебные метаданные CatBoost не влияют на проверку. Изменение самой модели требует пересоздания связанных артефактов. SHA-256 исходного файла также сохраняется для учёта версии.
 
-Проверки: `python -m unittest discover -s tests -v`. Проверяются строгий порог, временные границы и purge, отсутствие влияния будущих/ещё не полученных пакетов, порядок признаков, SHAP-аддитивность, сохранение модели, формат submission.
+Проверки: `python -m unittest discover -s ml_service/research/vovchik/tests -v`. Проверяются строгий порог, временные границы и purge, отсутствие влияния будущих/ещё не полученных пакетов, порядок признаков, SHAP-аддитивность, сохранение модели, формат submission.
 
 Основания: [CatBoost SHAP](https://catboost.ai/docs/en/concepts/shap-values), [вероятностная калибровка scikit-learn](https://scikit-learn.org/1.7/modules/calibration.html).

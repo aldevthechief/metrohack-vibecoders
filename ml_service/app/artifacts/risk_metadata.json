@@ -89,11 +89,11 @@
   ],
   "calibration": {
     "method": "sigmoid_on_raw_margin",
-    "slope": 0.7877089538545211,
-    "intercept": -0.003832046586692804,
+    "slope": 0.7877089538545209,
+    "intercept": -0.003832046586691928,
     "selected": "sigmoid",
     "selectionBrierRaw": 0.14447827615371212,
-    "selectionBrierSigmoid": 0.1416450782453889
+    "selectionBrierSigmoid": 0.14164507824538888
   },
   "split": {
     "method": "temporal_train_only_with_label_availability_purge",
@@ -107,6 +107,6 @@
     "calibrationPositive": 200,
     "selectionPositive": 141
   },
-  "regressorSha256": "c79cd82cb222557dc0e84e5e47a6cfca3deaedcc56f0975ac4a1ba76e6461758",
+  "regressorSha256": "013c4fb8c352104c77dbe6aa992cc5140c79246d504dd1c352529e5173c969d6",
   "regressorFingerprint": "c855be4a30fa7ab01e2c8a1caa050c4f624c87bb419562206a5fb9d8bd593693"
 }

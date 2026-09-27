@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from catboost import CatBoostRegressor
-from ml_risk import (CATEGORICAL, explain_predictions, model_input, risk_target,
+from ml_service.app.services.ml_risk import (CATEGORICAL, explain_predictions, model_input, risk_target,
                      temporal_split, validate_submission, train_risk, predict_risk, model_fingerprint)
 
 

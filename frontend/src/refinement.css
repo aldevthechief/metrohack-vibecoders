@@ -511,7 +511,12 @@ body, .topbar, .panel, .replay-bar, .scenario-modal, .source-badge,
 .telemetry-overview-grid strong { display: block; margin-top: 7px; color: var(--ink-strong); font-size: 25px; font-weight: 800; line-height: 1.1; }
 .telemetry-footnote { margin: 0; padding: 0 20px 18px; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .telemetry-fleet-panel .fleet-table-wrap { max-height: 360px; overflow: auto; }
-.telemetry-fleet-panel .fleet-table td:last-child { max-width: 300px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+.gps-coordinate-cell strong, .numeric-forecast-cell strong { display: block; color: var(--ink-strong); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.gps-coordinate-cell small, .numeric-forecast-cell small { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; white-space: nowrap; }
+.gps-coordinate-cell small { white-space: normal; }
+.numeric-forecast-cell strong.high-text { color: var(--red); }
+.numeric-forecast-cell strong.medium-text { color: var(--amber); }
+.numeric-forecast-cell strong.low-text { color: var(--green); }
 @media (max-width: 760px) {
   .telemetry-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vehicle-telemetry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

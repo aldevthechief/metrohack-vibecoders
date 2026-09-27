@@ -15,10 +15,8 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[2]
-ROOT = REPO.parent
-DATASET_ROOT = next((path for path in (ROOT / "dataset", REPO / "dataset") if path.exists()), ROOT / "dataset")
-DATASET = DATASET_ROOT / "validate"
-PREDICTIONS = REPO / "ml_service" / "research" / "vovchik" / "predictions_validate.json"
+DATASET = REPO / "dataset" / "validate"
+PREDICTIONS = REPO / "ml_service" / "research" / "vovchik" / "results" / "predictions_validate.json"
 OUTPUT = Path(__file__).resolve().parents[1] / "src" / "data" / "demo.json"
 
 

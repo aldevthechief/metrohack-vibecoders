@@ -84,6 +84,7 @@ class FleetService:
                 position=[latest.longitude, latest.latitude] if latest else None,
                 trail=[[point.longitude, point.latitude] for point in valid[-60:]],
                 telemetryTime=latest.event_time.isoformat(sep=" ") if latest else None,
+                gpsReceivedAt=latest.receive_time.isoformat(sep=" ") if latest else None,
                 lastReceivedAt=last_received.isoformat(sep=" "),
                 telemetryAgeSec=max(0, gps_age) if gps_age is not None else None,
                 speedKmh=latest.speed if latest else None,

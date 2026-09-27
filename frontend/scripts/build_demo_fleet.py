@@ -14,9 +14,7 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[2]
-ROOT = REPO.parent
-DATASET_ROOT = next((path for path in (ROOT / "dataset", REPO / "dataset") if path.exists()), ROOT / "dataset")
-TRAFFIC = DATASET_ROOT / "validate" / "traffic.csv"
+TRAFFIC = REPO / "dataset" / "validate" / "traffic.csv"
 OUTPUT = Path(__file__).resolve().parents[1] / "src" / "data" / "demo_fleet.json"
 SAMPLE_INTERVAL_SECONDS = 10
 
@@ -30,16 +28,18 @@ def main() -> None:
             try:
                 lon, lat = float(row["lon"]), float(row["lat"])
                 event_time = datetime.fromisoformat(row["event_time"])
+                receive_time = datetime.fromisoformat(row["receive_time"])
             except (TypeError, ValueError):
                 continue
             if not (36.5 < lon < 38.5 and 55 < lat < 56.5):
                 continue
             seconds = round((event_time - event_time.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds(), 1)
+            received_seconds = round((receive_time - receive_time.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds(), 1)
             try:
                 speed = round(float(row["speed"]), 1)
             except (TypeError, ValueError):
                 speed = None
-            tracks[row["tr_id"]].append([seconds, round(lon, 7), round(lat, 7), speed])
+            tracks[row["tr_id"]].append([seconds, round(lon, 7), round(lat, 7), speed, received_seconds])
 
     sampled = {}
     for vehicle_id, points in tracks.items():

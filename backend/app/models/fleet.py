@@ -8,6 +8,7 @@ class FleetVehicle(BaseModel):
     position: list[float] | None = None
     trail: list[list[float]] = Field(default_factory=list)
     telemetryTime: str | None = None
+    gpsReceivedAt: str | None = None
     lastReceivedAt: str
     telemetryAgeSec: float | None = None
     speedKmh: float | None = None

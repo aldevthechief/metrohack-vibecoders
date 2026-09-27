@@ -53,6 +53,23 @@ const fleetVehicles = computed(() => selectedMode.value === 'demo'
 const hasEmulator = computed(() => fleetVehicles.value.some((vehicle) => vehicle.source === 'emulator'))
 const hasRealNdtp = computed(() => fleetVehicles.value.some((vehicle) => vehicle.source === 'ndtp'))
 const timeLabel = (value) => value ? value.slice(11, 16) : '—'
+const fullTimeLabel = (value) => value ? value.slice(11, 19) : '—'
+const secondsClock = (value) => {
+  const seconds = Math.floor(value)
+  return [Math.floor(seconds / 3600), Math.floor(seconds % 3600 / 60), seconds % 60].map((part) => String(part).padStart(2, '0')).join(':')
+}
+const gpsTimeLabel = (vehicle) => {
+  if (selectedMode.value !== 'demo') return fullTimeLabel(vehicle.telemetryTime)
+  if (vehicle.gpsTimeSeconds == null) return '—'
+  return secondsClock(vehicle.gpsTimeSeconds)
+}
+const gpsReceivedLabel = (vehicle) => selectedMode.value === 'demo'
+  ? vehicle.gpsReceivedSeconds == null ? '—' : secondsClock(vehicle.gpsReceivedSeconds)
+  : fullTimeLabel(vehicle.gpsReceivedAt)
+const gpsCoordinateLabel = (vehicle) => {
+  const [longitude, latitude] = vehicle.gpsPosition || vehicle.position || []
+  return longitude == null || latitude == null ? 'Нет координат' : `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`
+}
 const dateLabel = (value) => value ? new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(value.replace(' ', 'T'))) : '—'
 const signedMinutes = (seconds) => {
   const value = Math.round(Math.abs(seconds) / 60)
@@ -108,6 +125,7 @@ const selectedRecord = computed(() => {
   if (selectedId.value && fleetVehicles.value.some((vehicle) => vehicle.vehicleId === selectedId.value)) return null
   return visibleRecords.value[0] || activeRecords.value[0] || null
 })
+const activePredictionFor = (vehicleId) => activeRecords.value.find((record) => record.vehicleId === vehicleId)
 const highCount = computed(() => activeRecords.value.filter((record) => riskOf(record) === 'high').length)
 const mediumCount = computed(() => activeRecords.value.filter((record) => riskOf(record) === 'medium').length)
 const freshCount = computed(() => activeRecords.value.filter(isFresh).length)
@@ -280,10 +298,11 @@ async function loadData() {
     if (requestedMode === 'demo' && result.state === 'complete') clearInterval(pollingTimer)
     connection.value = dataSource.mode === 'demo' ? 'demo' : result.source === 'submission-replay' ? 'replay' : result.source === 'backend-live' ? 'api' : 'empty'
     connectionError.value = ''
-    if (!initialSelectionMade && timestamps.value.length) {
+    if (!initialSelectionMade && timestamps.value.length > (requestedMode === 'demo' ? 1 : 0)) {
       const preferred = timestamps.value.indexOf('2026-01-06 21:00:00')
       timelinePosition.value = dataSource.mode === 'demo' && preferred >= 0 ? preferred : timestamps.value.length - 1
       initialSelectionMade = true
+      if (requestedMode === 'demo' && timestamps.value.length > 1) playing.value = true
     } else if (dataSource.mode === 'api') {
       const previousTimeIndex = timestamps.value.indexOf(previousTime)
       timelinePosition.value = wasFollowingLatest || previousTimeIndex < 0
@@ -419,7 +438,19 @@ onUnmounted(() => { clearInterval(replayTimer); cancelAnimationFrame(replayFrame
               </div>
             </section>
             <section class="panel analytics-chart"><div class="section-head"><div><div class="panel-kicker">ПОСЛЕДНИЙ ЧАС</div><h2>Сумма прогнозируемых опозданий</h2></div></div><div class="chart-area"><div class="chart-y"><span>{{ Math.round(chartMaximum / 60) }} мин</span><span>{{ Math.round(chartMaximum * 2 / 180) }} мин</span><span>{{ Math.round(chartMaximum / 180) }} мин</span><span>0</span></div><svg viewBox="0 0 600 180" preserveAspectRatio="xMidYMid meet" aria-label="Сумма прогнозируемых опозданий активных ТС"><line x1="20" y1="15" x2="580" y2="15"/><line x1="20" y1="55" x2="580" y2="55"/><line x1="20" y1="95" x2="580" y2="95"/><line x1="20" y1="142" x2="580" y2="142"/><path v-if="chartPath" :d="chartPath" class="chart-path"/><g v-for="point in chartPoints" :key="point.time" class="chart-point" @mouseenter="hoveredChartPoint = point.time" @mouseleave="hoveredChartPoint = null" @focusin="hoveredChartPoint = point.time" @focusout="hoveredChartPoint = null"><circle :cx="point.x" :cy="point.y" r="12" class="chart-point-hit" tabindex="0" :aria-label="`${timeLabel(point.time)}, суммарное опоздание ${Math.round(point.totalDelaySec / 60)} мин, ${point.vehicles} ТС`"/><circle :cx="point.x" :cy="point.y" :r="hoveredChartPoint === point.time ? 7 : 5" :class="point.high ? 'high' : 'low'" class="chart-point-dot"/><g v-if="hoveredChartPoint === point.time" :transform="`translate(${point.x > 420 ? point.x - 168 : point.x + 12}, ${point.y < 42 ? point.y + 10 : point.y - 40})`" class="chart-risk-tag" :class="point.high ? 'high' : 'low'"><rect width="156" height="30" rx="8"/><text x="10" y="19">{{ Math.round(point.totalDelaySec / 60) }} мин · {{ point.vehicles }} ТС · риск {{ point.high }}</text></g></g></svg></div><div class="chart-caption"><span>{{ timeLabel(chartBuckets[0]?.time) }}</span><span>{{ timeLabel(currentTime) }}</span></div><p v-if="!chartPoints.length" class="chart-empty">Пока нет активных прогнозов для графика. Телеметрия ТС показана ниже.</p></section>
-            <section class="panel telemetry-fleet-panel"><div class="section-head"><div><div class="panel-kicker">ВСЕ ВИДИМЫЕ ТС</div><h2>Сводка по транспорту</h2></div><span class="caption">{{ selectedMode === 'demo' ? 'Исторический GPS' : `Ошибок NDTP: ${payload.ndtpStatus?.rejected_frames ?? 0}` }}</span></div><div class="fleet-table-wrap"><table class="fleet-table"><thead><tr><th>ТС</th><th>ИСТОЧНИК</th><th>СКОРОСТЬ</th><th>ПОСЛЕДНИЙ GPS</th><th>ПРОГНОЗ</th></tr></thead><tbody><tr v-for="vehicle in fleetVehicles" :key="vehicle.vehicleId" @click="selectedId = vehicle.vehicleId; page = 'overview'"><td><strong>ТС {{ vehicle.vehicleId }}</strong></td><td>{{ selectedMode === 'demo' ? 'Исторический' : vehicle.source === 'emulator' ? 'Эмулятор' : 'NDTP' }}</td><td>{{ vehicle.speedKmh == null ? '—' : `${Math.round(vehicle.speedKmh)} км/ч` }}</td><td>{{ duration(vehicle.telemetryAgeSec) }} назад</td><td>{{ activeRecords.some((record) => record.vehicleId === vehicle.vehicleId) ? 'Есть прогноз' : predictionStatusText[vehicle.predictionStatus] || 'Нет прогноза' }}</td></tr><tr v-if="!fleetVehicles.length"><td colspan="5" class="no-rows">Пока нет телеметрии для выбранного момента.</td></tr></tbody></table></div></section>
+            <section class="panel telemetry-fleet-panel">
+              <div class="section-head"><div><div class="panel-kicker">ВСЕ ВИДИМЫЕ ТС</div><h2>Сводка по транспорту</h2></div><span class="caption">{{ selectedMode === 'demo' ? 'Исторический GPS' : `Ошибок NDTP: ${payload.ndtpStatus?.rejected_frames ?? 0}` }}</span></div>
+              <div class="fleet-table-wrap"><table class="fleet-table"><thead><tr><th>ТС</th><th>ИСТОЧНИК</th><th>СКОРОСТЬ</th><th>GPS: ШИРОТА, ДОЛГОТА / ВРЕМЯ</th><th>ПРОГНОЗ</th></tr></thead><tbody>
+                <tr v-for="vehicle in fleetVehicles" :key="vehicle.vehicleId" @click="selectedId = vehicle.vehicleId; page = 'overview'">
+                  <td><strong>ТС {{ vehicle.vehicleId }}</strong></td>
+                  <td>{{ selectedMode === 'demo' ? 'Исторический' : vehicle.source === 'emulator' ? 'Эмулятор' : 'NDTP' }}</td>
+                  <td>{{ vehicle.speedKmh == null ? '—' : `${Math.round(vehicle.speedKmh)} км/ч` }}</td>
+                  <td class="gps-coordinate-cell"><strong>{{ gpsCoordinateLabel(vehicle) }}</strong><small>GPS {{ gpsTimeLabel(vehicle) }} · получен {{ gpsReceivedLabel(vehicle) }} МСК</small></td>
+                  <td class="numeric-forecast-cell"><template v-if="activePredictionFor(vehicle.vehicleId)"><strong :class="`${riskOf(activePredictionFor(vehicle.vehicleId))}-text`">{{ preciseDelay(activePredictionFor(vehicle.vehicleId).predictionSec) }}</strong><small>{{ probabilityLabel(activePredictionFor(vehicle.vehicleId).delayProbability) }} · задержка &gt; 2 мин</small></template><span v-else>—</span></td>
+                </tr>
+                <tr v-if="!fleetVehicles.length"><td colspan="5" class="no-rows">Пока нет телеметрии для выбранного момента.</td></tr>
+              </tbody></table></div>
+            </section>
           </div>
         </template>
         </div></Transition>
@@ -428,7 +459,7 @@ onUnmounted(() => { clearInterval(replayTimer); cancelAnimationFrame(replayFrame
       <footer class="replay-bar"><div class="replay-label"><span class="replay-icon"><Clock3 :size="18" /></span><div><strong>{{ connection === 'replay' || connection === 'demo' ? 'Историческое воспроизведение' : 'Текущие прогнозы' }}</strong><small>{{ dateLabel(displayTime) }} · МСК</small></div></div><div class="replay-controls"><button aria-label="Предыдущая точка" title="Предыдущая точка" @click="step(-1)"><ChevronLeft :size="19" /></button><button class="play-button" :aria-label="playing ? 'Пауза' : 'Воспроизвести'" @click="playing = !playing"><Pause v-if="playing" :size="17" fill="currentColor" /><Play v-else :size="17" fill="currentColor" /></button><button aria-label="Следующая точка" title="Следующая точка" @click="step(1)"><ChevronRight :size="19" /></button></div><div class="timeline"><span>{{ timestamps[0] ? timeLabel(timestamps[0]) : '—' }}</span><input type="range" :min="0" :max="Math.max(0, timestamps.length - 1)" :step="selectedMode === 'demo' ? 0.01 : 1" :value="timelinePosition" @input="timelinePosition = Number($event.target.value)" aria-label="Время воспроизведения" /><span>{{ timestamps.at(-1) ? timeLabel(timestamps.at(-1)) : '—' }}</span></div><div class="current-clock">{{ timeLabel(displayTime) }} <span>МСК</span></div></footer>
     </div>
 
-    <div v-if="showScenario" class="modal-backdrop" @click.self="showScenario = false"><section class="scenario-modal" role="dialog" aria-modal="true" aria-labelledby="scenario-title"><div class="modal-head"><span class="modal-icon"><SlidersHorizontal :size="21" /></span><button aria-label="Закрыть" @click="showScenario = false"><X :size="21" /></button></div><div class="panel-kicker">СЦЕНАРИЙ ДИСПЕТЧЕРА</div><h2 id="scenario-title">Что, если сократить простой?</h2><p>Оцените возможный эффект для выбранного ТС. Это арифметический сценарий, не повторный прогноз модели.</p><div v-if="selectedRecord" class="scenario-target"><span>ТС {{ selectedRecord.vehicleId }} · {{ selectedRecord.targetAddress }}</span><strong>{{ preciseDelay(selectedRecord.predictionSec) }}</strong></div><label class="scenario-label" for="scenario-range">Сократить задержку на остановках <strong>{{ scenarioSeconds }} с</strong></label><input id="scenario-range" v-model.number="scenarioSeconds" type="range" min="0" max="300" step="15" /><div class="scenario-scale"><span>0 с</span><span>5 мин</span></div><div class="scenario-result"><div><span>Исходный прогноз</span><strong>{{ selectedRecord ? preciseDelay(selectedRecord.predictionSec) : '—' }}</strong></div><ArrowRight :size="22" /><div><span>Сценарное отклонение</span><strong>{{ selectedRecord ? preciseDelay(scenarioResult) : '—' }}</strong></div></div><div class="scenario-disclaimer"><Info :size="16" /> Предположение: каждую сэкономленную секунду простоя переносим на прибытие один к одному. Влияние на остальные рейсы и вероятность реализации не рассчитаны.</div><button class="primary-button modal-done" @click="showScenario = false">Готово</button></section></div>
+    <div v-if="showScenario" class="modal-backdrop" @click.self="showScenario = false"><section class="scenario-modal" role="dialog" aria-modal="true" aria-labelledby="scenario-title"><div class="modal-head"><span class="modal-icon"><SlidersHorizontal :size="21" /></span><button aria-label="Закрыть" @click="showScenario = false"><X :size="21" /></button></div><div class="panel-kicker">СЦЕНАРИЙ ДИСПЕТЧЕРА</div><h2 id="scenario-title">Что, если сократить простой?</h2><p>Оцените возможный эффект для выбранного ТС.</p><div v-if="selectedRecord" class="scenario-target"><span>ТС {{ selectedRecord.vehicleId }} · {{ selectedRecord.targetAddress }}</span><strong>{{ preciseDelay(selectedRecord.predictionSec) }}</strong></div><label class="scenario-label" for="scenario-range">Сократить задержку на остановках <strong>{{ scenarioSeconds }} с</strong></label><input id="scenario-range" v-model.number="scenarioSeconds" type="range" min="0" max="300" step="15" /><div class="scenario-scale"><span>0 с</span><span>5 мин</span></div><div class="scenario-result"><div><span>Исходный прогноз</span><strong>{{ selectedRecord ? preciseDelay(selectedRecord.predictionSec) : '—' }}</strong></div><ArrowRight :size="22" /><div><span>Сценарное отклонение</span><strong>{{ selectedRecord ? preciseDelay(scenarioResult) : '—' }}</strong></div></div><button class="primary-button modal-done" @click="showScenario = false">Готово</button></section></div>
     <div v-if="toast" class="toast" role="status"><Check :size="17" /> {{ toast }}</div>
   </div>
 </template>

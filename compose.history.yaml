@@ -1,0 +1,24 @@
+services:
+  ml:
+    build: ./ml_service
+    ports:
+      - "127.0.0.1:8001:8001"
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      ML_SERVICE_URL: http://ml:8001
+      NDTP_HOST: 0.0.0.0
+      NDTP_PORT: 9201
+    ports:
+      - "127.0.0.1:8000:8000"
+      - "9201:9201"
+    depends_on:
+      - ml
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
