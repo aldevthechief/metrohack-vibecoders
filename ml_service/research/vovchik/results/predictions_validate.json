@@ -1,0 +1,5290 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "sampleId": "131672_1767670500",
+      "predictionSec": 69.29994943738677,
+      "predicted_delay_s": 69.29994943738677,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 274.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -33.254085926117256,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 1,
+            "shapValueSec": -71.20266256443676
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 274.0,
+            "shapValueSec": -45.1232005188813
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 274.0,
+            "shapValueSec": -43.5691145008396
+          }
+        ]
+      },
+      "delayProbability": 0.08088270530279217,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767670800",
+      "predictionSec": 71.12859257037363,
+      "predicted_delay_s": 71.12859257037363,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 274.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -24.63772667989221,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 2,
+            "shapValueSec": -73.64413972810269
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 274.0,
+            "shapValueSec": -48.568989919186556
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 274.0,
+            "shapValueSec": -44.46956405010674
+          }
+        ]
+      },
+      "delayProbability": 0.30098491998711197,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767671100",
+      "predictionSec": 141.56076743542138,
+      "predicted_delay_s": 141.56076743542138,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 274.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -13.036616291330844,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 274.0,
+            "shapValueSec": -53.56992151861007
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 274.0,
+            "shapValueSec": -45.53026567136532
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -8.751442030933923
+          }
+        ]
+      },
+      "delayProbability": 0.6621206270144607,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767671400",
+      "predictionSec": 80.33899694066578,
+      "predicted_delay_s": 80.33899694066578,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 78.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -9.552896357516474,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 11,
+            "shapValueSec": 24.54681238976588
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 78.0,
+            "shapValueSec": -12.129866657525358
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 78.0,
+            "shapValueSec": 11.025934618280054
+          }
+        ]
+      },
+      "delayProbability": 0.40911180403801384,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767672000",
+      "predictionSec": 30.05283259065219,
+      "predicted_delay_s": 30.05283259065219,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 60.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -6.454700422037046,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -18.185814385159645
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 60.0,
+            "shapValueSec": 15.383982789858237
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 60.0,
+            "shapValueSec": -9.139648339671009
+          }
+        ]
+      },
+      "delayProbability": 0.14878807639816768,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767672300",
+      "predictionSec": 55.61511667282326,
+      "predicted_delay_s": 55.61511667282326,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 43.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 11.693147883493559,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 43.0,
+            "shapValueSec": 12.38794429136494
+          },
+          {
+            "feature": "packet_frequency",
+            "label": "Число пакетов в минуту за 15 мин",
+            "value": 10.466666666666667,
+            "shapValueSec": 6.875142804039452
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 43.0,
+            "shapValueSec": -6.790131253736377
+          }
+        ]
+      },
+      "delayProbability": 0.26418275880166353,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767672600",
+      "predictionSec": 74.19331284877963,
+      "predicted_delay_s": 74.19331284877963,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -2.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 41.24061745704997,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 26.432442028338084
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 10.870640750874749
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 9.200599664855039
+          }
+        ]
+      },
+      "delayProbability": 0.3112332343039005,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767672900",
+      "predictionSec": 89.4146342257432,
+      "predicted_delay_s": 89.4146342257432,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 92.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 16.551494980009632,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 13.476729610766808
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 92.0,
+            "shapValueSec": -12.258080025655557
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 780.0,
+            "shapValueSec": -8.804523287039343
+          }
+        ]
+      },
+      "delayProbability": 0.5839574578018382,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767673200",
+      "predictionSec": 87.83850857226581,
+      "predicted_delay_s": 87.83850857226581,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 82.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 27.39761403213961,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 82.0,
+            "shapValueSec": -10.50622651774414
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 82.0,
+            "shapValueSec": 6.146723390640341
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -5.648615280431666
+          }
+        ]
+      },
+      "delayProbability": 0.4776625047876202,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767673500",
+      "predictionSec": 110.60940117613288,
+      "predicted_delay_s": 110.60940117613288,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 67.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 38.75262056440516,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 67.0,
+            "shapValueSec": 14.205694334020015
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 12.250186919166568
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 67.0,
+            "shapValueSec": -10.048113589120607
+          }
+        ]
+      },
+      "delayProbability": 0.7171147181002759,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767673800",
+      "predictionSec": 81.8138108615104,
+      "predicted_delay_s": 81.8138108615104,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 163.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -22.746828993021964,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 163.0,
+            "shapValueSec": -22.81953145970746
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 163.0,
+            "shapValueSec": -18.72973924487368
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -5.339102388548195
+          }
+        ]
+      },
+      "delayProbability": 0.24586515716363383,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767674100",
+      "predictionSec": 29.416356785753678,
+      "predicted_delay_s": 29.416356785753678,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 65.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -31.717494852376547,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 65.0,
+            "shapValueSec": 9.619590343388818
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 65.0,
+            "shapValueSec": -9.343683871163563
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 7.408932218243282
+          }
+        ]
+      },
+      "delayProbability": 0.1498518745276647,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767674400",
+      "predictionSec": -23.13912345847841,
+      "predicted_delay_s": -23.13912345847841,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 16.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -40.44480677310167,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 16.0,
+            "shapValueSec": 11.42491805674087
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 5.152421622714782
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -3.7206693124940484
+          }
+        ]
+      },
+      "delayProbability": 0.10877453836362327,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767674700",
+      "predictionSec": -23.038207264526886,
+      "predicted_delay_s": -23.038207264526886,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -45.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -20.414553703001097,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 23.447376674577033
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -45.0,
+            "shapValueSec": 22.43109672926464
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.048860086970874
+          }
+        ]
+      },
+      "delayProbability": 0.04826620761847393,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767675000",
+      "predictionSec": 4.311890063060886,
+      "predicted_delay_s": 4.311890063060886,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -37.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 3.0384135520192714,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 21.60756646014373
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -37.0,
+            "shapValueSec": 19.357493295242943
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.859403807993218
+          }
+        ]
+      },
+      "delayProbability": 0.08934129606272972,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767675300",
+      "predictionSec": -28.79558072315631,
+      "predicted_delay_s": -28.79558072315631,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -39.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -12.717815088467908,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -39.0,
+            "shapValueSec": 19.312666753703294
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.44150151366686
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 6.719053150279764
+          }
+        ]
+      },
+      "delayProbability": 0.03642748064877125,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767675600",
+      "predictionSec": 34.438238851185986,
+      "predicted_delay_s": 34.438238851185986,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 172.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -36.18331308514799,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -30.784228846084265
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 172.0,
+            "shapValueSec": -29.80410562296772
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 172.0,
+            "shapValueSec": -29.239126542275795
+          }
+        ]
+      },
+      "delayProbability": 0.10926857216678813,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767675900",
+      "predictionSec": -1.8722650259248894,
+      "predicted_delay_s": -1.8722650259248894,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 80.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -38.21331011589227,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -32.639827031711185
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 80.0,
+            "shapValueSec": 11.680924815385003
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 80.0,
+            "shapValueSec": -11.149065641368141
+          }
+        ]
+      },
+      "delayProbability": 0.053719971470954996,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767676200",
+      "predictionSec": 0.43276773703522053,
+      "predicted_delay_s": 0.43276773703522053,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 86.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -23.682604353866516,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 4,
+            "shapValueSec": -47.188287336688646
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 86.0,
+            "shapValueSec": -11.068742229969066
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 86.0,
+            "shapValueSec": 7.923388709897718
+          }
+        ]
+      },
+      "delayProbability": 0.1470715103894138,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767676500",
+      "predictionSec": -27.800529709086106,
+      "predicted_delay_s": -27.800529709086106,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -64.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 21.946571517513796,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -64.0,
+            "shapValueSec": 34.01616022231192
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -17.575017943363452
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 9.362743546789966
+          }
+        ]
+      },
+      "delayProbability": 0.13988403299447946,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767676800",
+      "predictionSec": -38.81436904703422,
+      "predicted_delay_s": -38.81436904703422,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -119.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 13.688944935774686,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -119.0,
+            "shapValueSec": 51.428558475233025
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 16.39256742769507
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 10.226547166601275
+          }
+        ]
+      },
+      "delayProbability": 0.05465317212226159,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767677100",
+      "predictionSec": -1.4885682119605192,
+      "predicted_delay_s": -1.4885682119605192,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -11.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -7.761840261744258,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -11.0,
+            "shapValueSec": 14.956626189844632
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 7.754552331330664
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 6.1130805809467645
+          }
+        ]
+      },
+      "delayProbability": 0.040781136017810145,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767679500",
+      "predictionSec": 42.88576439808162,
+      "predicted_delay_s": 42.88576439808162,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 47.809948023832725,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 2,
+            "shapValueSec": -21.769686116764216
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 17.71059952269396
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 10.68589002065745
+          }
+        ]
+      },
+      "delayProbability": 0.0499163916209874,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767679800",
+      "predictionSec": 50.54357629153452,
+      "predicted_delay_s": 50.54357629153452,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 46.69516377988992,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 15.02847157277359
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 9.112762711841171
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -8.741834720631863
+          }
+        ]
+      },
+      "delayProbability": 0.1512929444864149,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767680100",
+      "predictionSec": 41.72298449303579,
+      "predicted_delay_s": 41.72298449303579,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 26.217802529102208,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.920814084776117
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 9.300065312598694
+          },
+          {
+            "feature": "hist_packet_fraction",
+            "label": "Доля исторических пакетов за 15 мин",
+            "value": 0.19626168224299065,
+            "shapValueSec": 5.835289618897068
+          }
+        ]
+      },
+      "delayProbability": 0.43418925677187564,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767680400",
+      "predictionSec": 53.04820853064724,
+      "predicted_delay_s": 53.04820853064724,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 49.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 3.8175133300400006,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 49.0,
+            "shapValueSec": 18.546294154472385
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -12.508211341944893
+          },
+          {
+            "feature": "unit_id",
+            "label": "Идентификатор бортового устройства",
+            "value": "786201",
+            "shapValueSec": 5.7435994404180715
+          }
+        ]
+      },
+      "delayProbability": 0.4159159056153378,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767680700",
+      "predictionSec": 117.75463608627432,
+      "predicted_delay_s": 117.75463608627432,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 167.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -18.865653137549625,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 167.0,
+            "shapValueSec": -19.437531245276823
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 17.55465577604437
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 167.0,
+            "shapValueSec": -16.945848254605327
+          }
+        ]
+      },
+      "delayProbability": 0.6548304223255187,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767684600",
+      "predictionSec": 7.10741964911756,
+      "predicted_delay_s": 7.10741964911756,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -30.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 12.530338773585221,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -30.0,
+            "shapValueSec": 19.39759338636276
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 9.41537427119197
+          },
+          {
+            "feature": "packet_frequency",
+            "label": "Число пакетов в минуту за 15 мин",
+            "value": 10.066666666666666,
+            "shapValueSec": 7.315100270315885
+          }
+        ]
+      },
+      "delayProbability": 0.23601749945843195,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130238_1767684600",
+      "predictionSec": 33.92370549797777,
+      "predicted_delay_s": 33.92370549797777,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 37.10024770423561,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 2,
+            "shapValueSec": -20.911820274857405
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 17.51559014542724
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 11.77067497551064
+          }
+        ]
+      },
+      "delayProbability": 0.02494813971292871,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130238_1767684900",
+      "predictionSec": 37.032924691014934,
+      "predicted_delay_s": 37.032924691014934,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 33.455189920579215,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 16.916860643649358
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -12.26988419995922
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 10.481745379083852
+          }
+        ]
+      },
+      "delayProbability": 0.04861458424325502,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767684900",
+      "predictionSec": 63.194563319321006,
+      "predicted_delay_s": 63.194563319321006,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 30.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 12.20066747588357,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 32.64023955727534
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 840.0,
+            "shapValueSec": -9.785769297319211
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 30.0,
+            "shapValueSec": 9.69041263581957
+          }
+        ]
+      },
+      "delayProbability": 0.1333122691604089,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767685200",
+      "predictionSec": 72.79782688657144,
+      "predicted_delay_s": 72.79782688657144,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 116.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 0.32455408162258337,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 116.0,
+            "shapValueSec": -20.898465404478276
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -5.6527606675579625
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 7,
+            "shapValueSec": -5.424514070676618
+          }
+        ]
+      },
+      "delayProbability": 0.2749720222472505,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130238_1767685200",
+      "predictionSec": 19.627428995023536,
+      "predicted_delay_s": 19.627428995023536,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 16.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -3.595598605079495,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 16.0,
+            "shapValueSec": 16.910987878251213
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 6.733500651893571
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -4.87047387770342
+          }
+        ]
+      },
+      "delayProbability": 0.12411388656808077,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767685500",
+      "predictionSec": 68.42236994115278,
+      "predicted_delay_s": 68.42236994115278,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 99.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 5.944359063558981,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 99.0,
+            "shapValueSec": -13.352396700872141
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 7,
+            "shapValueSec": -6.1266143851012975
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 720.0,
+            "shapValueSec": -5.49199098409446
+          }
+        ]
+      },
+      "delayProbability": 0.2937525397256103,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130238_1767685500",
+      "predictionSec": 54.188994050661194,
+      "predicted_delay_s": 54.188994050661194,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 66.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -29.375924109702336,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 26.681306543781265
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 66.0,
+            "shapValueSec": 10.718156304228552
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 66.0,
+            "shapValueSec": -8.283557635307949
+          }
+        ]
+      },
+      "delayProbability": 0.19605887612449596,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767685800",
+      "predictionSec": 81.30105838067259,
+      "predicted_delay_s": 81.30105838067259,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 62.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 14.546864339702964,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 62.0,
+            "shapValueSec": 14.64091498284293
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 10.58842153642356
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 62.0,
+            "shapValueSec": -8.92415542595854
+          }
+        ]
+      },
+      "delayProbability": 0.5990248612305407,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130238_1767685800",
+      "predictionSec": 81.80533805759029,
+      "predicted_delay_s": 81.80533805759029,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 127.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -38.17767913435164,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 35.16542210327036
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 127.0,
+            "shapValueSec": -22.911689251796652
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 127.0,
+            "shapValueSec": -7.719728607193433
+          }
+        ]
+      },
+      "delayProbability": 0.4475357396414871,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130238_1767686100",
+      "predictionSec": 66.81424155406289,
+      "predicted_delay_s": 66.81424155406289,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 115.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -28.85414630931233,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 115.0,
+            "shapValueSec": -17.61083512675023
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 14.758042570792194
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -4.927832528328449
+          }
+        ]
+      },
+      "delayProbability": 0.296898845650991,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767686100",
+      "predictionSec": 67.77399343479618,
+      "predicted_delay_s": 67.77399343479618,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 89.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 12.842874501764427,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 89.0,
+            "shapValueSec": -11.853015460441553
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 720.0,
+            "shapValueSec": -5.481136767916053
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -5.183741786272291
+          }
+        ]
+      },
+      "delayProbability": 0.324120111857055,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767686400",
+      "predictionSec": -16.824559309738458,
+      "predicted_delay_s": -16.824559309738458,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -17.881452029218636,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 15.348649109825681
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -14.444743240462614
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 11.703973902455443
+          }
+        ]
+      },
+      "delayProbability": 0.010984425415717907,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767686700",
+      "predictionSec": 4.021083951690734,
+      "predicted_delay_s": 4.021083951690734,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 11.62163039975695,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -21.081497626413178
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 15.363265705142352
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 9.668672525542922
+          }
+        ]
+      },
+      "delayProbability": 0.01712125963448029,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767687000",
+      "predictionSec": -6.041390224037738,
+      "predicted_delay_s": -6.041390224037738,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 0.49826014661602525,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -19.58334856673516
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 14.428305529046366
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 10.166379719373372
+          }
+        ]
+      },
+      "delayProbability": 0.004334920026010791,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767687300",
+      "predictionSec": 14.023519335765851,
+      "predicted_delay_s": 14.023519335765851,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -0.262660299316412,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.394980885344985
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 8.217795671362047
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 6.224390130713568
+          }
+        ]
+      },
+      "delayProbability": 0.00739647615380646,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767687600",
+      "predictionSec": 51.56546376962736,
+      "predicted_delay_s": 51.56546376962736,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 20.626551639130035,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 23.103922007325288
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 10.816754978193687
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 8.569222197316664
+          }
+        ]
+      },
+      "delayProbability": 0.09424040310550333,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767687900",
+      "predictionSec": 45.96072129107057,
+      "predicted_delay_s": 45.96072129107057,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 26.923507644101758,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 14.724124699117745
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 8.252105174659386
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 7.611970825529974
+          }
+        ]
+      },
+      "delayProbability": 0.05775262245701774,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767690000",
+      "predictionSec": 46.972997121304445,
+      "predicted_delay_s": 46.972997121304445,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 42.86610103653852,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 15.775273906618008
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -9.836879217685901
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 9.7194884481721
+          }
+        ]
+      },
+      "delayProbability": 0.05468745065938301,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767690300",
+      "predictionSec": 70.06781218535562,
+      "predicted_delay_s": 70.06781218535562,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 40.207291338966414,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 21.379612676459516
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.943685537487086
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 8.088209684780903
+          }
+        ]
+      },
+      "delayProbability": 0.33210824017930246,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767690600",
+      "predictionSec": 68.64025331274814,
+      "predicted_delay_s": 68.64025331274814,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 46.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 3.7543478417779284,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 28.673992179003072
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 46.0,
+            "shapValueSec": 8.849082101292638
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 46.0,
+            "shapValueSec": -7.086181756987159
+          }
+        ]
+      },
+      "delayProbability": 0.41109755317472124,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767690900",
+      "predictionSec": 83.00919570369211,
+      "predicted_delay_s": 83.00919570369211,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 85.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -2.4298411454779067,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 31.12399055448357
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 85.0,
+            "shapValueSec": -12.296861399325284
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -6.837105253649923
+          }
+        ]
+      },
+      "delayProbability": 0.165254974068141,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767691200",
+      "predictionSec": 8.457043633769274,
+      "predicted_delay_s": 8.457043633769274,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 147.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -30.489071708730222,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 147.0,
+            "shapValueSec": -42.57688648711901
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 147.0,
+            "shapValueSec": -31.539376774844882
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -22.38663434319832
+          }
+        ]
+      },
+      "delayProbability": 0.03379454374945688,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767691500",
+      "predictionSec": 44.61524328063443,
+      "predicted_delay_s": 44.61524328063443,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 111.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -15.26549791767691,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 111.0,
+            "shapValueSec": -25.213530685826488
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -8.352448714314022
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -6.0022923492099025
+          }
+        ]
+      },
+      "delayProbability": 0.04936166921388801,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767695400",
+      "predictionSec": -121.9357250643553,
+      "predicted_delay_s": -121.9357250643553,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -195.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -2.8492976960250047,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -195.0,
+            "shapValueSec": 57.868670168539005
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 17.477271122963746
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 12.118618392505173
+          }
+        ]
+      },
+      "delayProbability": 0.028844900852297337,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767695700",
+      "predictionSec": -49.57767214200891,
+      "predicted_delay_s": -49.57767214200891,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -252.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 56.772629124280144,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -252.0,
+            "shapValueSec": 116.36383134566941
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 22.781510777165604
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 252.0,
+            "shapValueSec": 18.05534366321424
+          }
+        ]
+      },
+      "delayProbability": 0.05985784073243768,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767696000",
+      "predictionSec": -42.90424743293892,
+      "predicted_delay_s": -42.90424743293892,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -294.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 59.578229190530465,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -294.0,
+            "shapValueSec": 143.60646664276888
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 33.10240145919695
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 294.0,
+            "shapValueSec": 26.35964232690323
+          }
+        ]
+      },
+      "delayProbability": 0.07286731979595695,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767696300",
+      "predictionSec": 19.578317231852452,
+      "predicted_delay_s": 19.578317231852452,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -321.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 119.08805236350702,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -321.0,
+            "shapValueSec": 169.4630683195373
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 321.0,
+            "shapValueSec": 32.64400521844038
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 30.93417838270607
+          }
+        ]
+      },
+      "delayProbability": 0.4488522510194995,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767696600",
+      "predictionSec": 23.514017129812814,
+      "predicted_delay_s": 23.514017129812814,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 12.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 17.394968567298562,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 12.0,
+            "shapValueSec": 14.928690937056793
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -4.865236999397002
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 7,
+            "shapValueSec": -4.393418322807198
+          }
+        ]
+      },
+      "delayProbability": 0.2594674581300768,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767696900",
+      "predictionSec": -95.75603395674342,
+      "predicted_delay_s": -95.75603395674342,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -73.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -33.77897134388941,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -73.0,
+            "shapValueSec": 21.875218054408638
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.643499864557597
+          },
+          {
+            "feature": "sp_distance_to_target_m",
+            "label": "Расстояние по прямой до цели, м",
+            "value": 3619.3457233325944,
+            "shapValueSec": -7.944793479481885
+          }
+        ]
+      },
+      "delayProbability": 0.03838596013829418,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767699000",
+      "predictionSec": 22.906115448806617,
+      "predicted_delay_s": 22.906115448806617,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 211.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -50.061886624575536,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -51.403513221525245
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 211.0,
+            "shapValueSec": -40.32747619401459
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 211.0,
+            "shapValueSec": -34.750021458739816
+          }
+        ]
+      },
+      "delayProbability": 0.07163588515428858,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767699000",
+      "predictionSec": -172.4352879484244,
+      "predicted_delay_s": -172.4352879484244,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -162.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -39.580963570390374,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -162.0,
+            "shapValueSec": 50.64035161448351
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -25.7917294619807
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 15.848040521801526
+          }
+        ]
+      },
+      "delayProbability": 0.011850995570332944,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767699300",
+      "predictionSec": 7.9984526193081535,
+      "predicted_delay_s": 7.9984526193081535,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 249.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -64.91282433565715,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 2,
+            "shapValueSec": -70.98920841231165
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 249.0,
+            "shapValueSec": -47.18300958314218
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 249.0,
+            "shapValueSec": -46.36551799724249
+          }
+        ]
+      },
+      "delayProbability": 0.03874859988666439,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767699300",
+      "predictionSec": -142.56464466040592,
+      "predicted_delay_s": -142.56464466040592,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -169.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -18.579295167493456,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -169.0,
+            "shapValueSec": 56.31149369850164
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 28.777052776739104
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -28.5229089158149
+          }
+        ]
+      },
+      "delayProbability": 0.025490725915043,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767699600",
+      "predictionSec": -228.78960357343357,
+      "predicted_delay_s": -228.78960357343357,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -199.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -50.885075890569816,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -199.0,
+            "shapValueSec": 49.97089961568232
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -34.64885739588399
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 17.324417149676254
+          }
+        ]
+      },
+      "delayProbability": 0.016137513722860198,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767699600",
+      "predictionSec": 73.55393138054853,
+      "predicted_delay_s": 73.55393138054853,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 249.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -26.06257453664128,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -47.06700546041657
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 249.0,
+            "shapValueSec": -45.4850627395383
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 249.0,
+            "shapValueSec": -45.28043883051693
+          }
+        ]
+      },
+      "delayProbability": 0.17590267229686327,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767699900",
+      "predictionSec": -183.6209343251556,
+      "predicted_delay_s": -183.6209343251556,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -178.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -38.04751975123712,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -178.0,
+            "shapValueSec": 42.013461973879195
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 17.010039199414738
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 7,
+            "shapValueSec": -15.045928694874027
+          }
+        ]
+      },
+      "delayProbability": 0.06407623120312773,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767699900",
+      "predictionSec": 46.01631017990331,
+      "predicted_delay_s": 46.01631017990331,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -16.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 33.4567872240585,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -16.0,
+            "shapValueSec": 20.911484580529184
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 11.220475837355567
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 7.978549590298373
+          }
+        ]
+      },
+      "delayProbability": 0.2099449499936273,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767700200",
+      "predictionSec": -117.11498551888539,
+      "predicted_delay_s": -117.11498551888539,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -311.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 59.10557589394159,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -311.0,
+            "shapValueSec": 148.0097289425937
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -29.506989385057082
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 27.827686081974683
+          }
+        ]
+      },
+      "delayProbability": 0.04717653649136488,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767700200",
+      "predictionSec": 69.62440243218899,
+      "predicted_delay_s": 69.62440243218899,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 57.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 6.673868544772912,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 57.0,
+            "shapValueSec": 15.118965462297055
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 11.175721560503316
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 57.0,
+            "shapValueSec": -8.793166083045971
+          }
+        ]
+      },
+      "delayProbability": 0.20160465042823075,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767700500",
+      "predictionSec": 37.1242818140567,
+      "predicted_delay_s": 37.1242818140567,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -314.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 112.45763519788702,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -314.0,
+            "shapValueSec": 183.69518117284474
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 314.0,
+            "shapValueSec": 35.03908301262043
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 31.48336948304289
+          }
+        ]
+      },
+      "delayProbability": 0.7483884122479245,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767700500",
+      "predictionSec": 58.11092564690207,
+      "predicted_delay_s": 58.11092564690207,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 30.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 6.015510075730731,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 15.202465010552192
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 30.0,
+            "shapValueSec": 12.844956738936052
+          },
+          {
+            "feature": "unit_id",
+            "label": "Идентификатор бортового устройства",
+            "value": "1076894",
+            "shapValueSec": 5.598980874021409
+          }
+        ]
+      },
+      "delayProbability": 0.3091563286198912,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767700800",
+      "predictionSec": 71.23810518502074,
+      "predicted_delay_s": 71.23810518502074,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -158.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 101.37887199998647,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -158.0,
+            "shapValueSec": 85.76461133058044
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 30.279456915788895
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 158.0,
+            "shapValueSec": 23.36615199100305
+          }
+        ]
+      },
+      "delayProbability": 0.1715915520735779,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767701100",
+      "predictionSec": 66.22887313414381,
+      "predicted_delay_s": 66.22887313414381,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 56.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 20.339490098472698,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 56.0,
+            "shapValueSec": 19.695105345942217
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 56.0,
+            "shapValueSec": -12.209020969951684
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -6.045714287981101
+          }
+        ]
+      },
+      "delayProbability": 0.3916723170954315,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767701400",
+      "predictionSec": 57.77223446314591,
+      "predicted_delay_s": 57.77223446314591,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 58.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -16.399983758788572,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 26.60297621131094
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 58.0,
+            "shapValueSec": 9.919129089646463
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 58.0,
+            "shapValueSec": -8.798900026684596
+          }
+        ]
+      },
+      "delayProbability": 0.30603644916269696,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767701700",
+      "predictionSec": 54.19913500328025,
+      "predicted_delay_s": 54.19913500328025,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 147.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -29.570049288845915,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 147.0,
+            "shapValueSec": -27.079049019615738
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 147.0,
+            "shapValueSec": -17.105175926169448
+          },
+          {
+            "feature": "tr_id",
+            "label": "Идентификатор транспортного средства",
+            "value": "133957",
+            "shapValueSec": -7.4956037097503545
+          }
+        ]
+      },
+      "delayProbability": 0.4507692508607616,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767702000",
+      "predictionSec": 68.96574773705596,
+      "predicted_delay_s": 68.96574773705596,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 166.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -18.751286581413993,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 166.0,
+            "shapValueSec": -31.662091954330585
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 166.0,
+            "shapValueSec": -27.60617801374984
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -7.463708661111431
+          }
+        ]
+      },
+      "delayProbability": 0.31689809516068335,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767702300",
+      "predictionSec": 84.38744011359033,
+      "predicted_delay_s": 84.38744011359033,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 156.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -58.65850386273608,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 40.84236496662035
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 156.0,
+            "shapValueSec": -30.1103420654305
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 156.0,
+            "shapValueSec": -12.135091872525077
+          }
+        ]
+      },
+      "delayProbability": 0.48067338891557093,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "129964_1767702600",
+      "predictionSec": 19.539695757341867,
+      "predicted_delay_s": 19.539695757341867,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -3.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 6.3487478094040455,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 25.427196818608444
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.762844370198046
+          },
+          {
+            "feature": "cos_time",
+            "label": "Время суток: косинус",
+            "value": -0.9914448613738105,
+            "shapValueSec": -6.448106188530338
+          }
+        ]
+      },
+      "delayProbability": 0.041552558511144706,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "129964_1767702900",
+      "predictionSec": -35.41833807494046,
+      "predicted_delay_s": -35.41833807494046,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -38.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -19.655841347308012,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -38.0,
+            "shapValueSec": 14.925276333849224
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 10.54177417778393
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.321439813072725
+          }
+        ]
+      },
+      "delayProbability": 0.034556458290324756,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "129964_1767703200",
+      "predictionSec": -28.27907173697163,
+      "predicted_delay_s": -28.27907173697163,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -28.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -2.808164011164809,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -28.0,
+            "shapValueSec": 13.719303094998864
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 9.129388222059344
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 7,
+            "shapValueSec": -8.768611990526704
+          }
+        ]
+      },
+      "delayProbability": 0.02310743489114471,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "129964_1767703500",
+      "predictionSec": -25.4036164440452,
+      "predicted_delay_s": -25.4036164440452,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -23.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -5.147928853033749,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -23.0,
+            "shapValueSec": 14.297087735591836
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 7,
+            "shapValueSec": -8.121900083200075
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.120111808935107
+          }
+        ]
+      },
+      "delayProbability": 0.016724882478053715,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "129964_1767704100",
+      "predictionSec": -103.40171595122207,
+      "predicted_delay_s": -103.40171595122207,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -73.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -36.90290659856951,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -73.0,
+            "shapValueSec": 33.97373685792513
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -27.6779416851003
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 11.756382526860964
+          }
+        ]
+      },
+      "delayProbability": 0.007731108710331646,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767706200",
+      "predictionSec": 145.12255502293743,
+      "predicted_delay_s": 145.12255502293743,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 406.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -74.56049231146426,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 406.0,
+            "shapValueSec": -70.77113074184471
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 406.0,
+            "shapValueSec": -69.14280120397176
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -34.852033667443514
+          }
+        ]
+      },
+      "delayProbability": 0.10403560910855879,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767706500",
+      "predictionSec": 1.2184907169809813,
+      "predicted_delay_s": 1.2184907169809813,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 2.107282385277241,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -14.93732892644152
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 13.742559417714707
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 11.856964892768882
+          }
+        ]
+      },
+      "delayProbability": 0.00573350818229776,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767706800",
+      "predictionSec": -0.9050047259756373,
+      "predicted_delay_s": -0.9050047259756373,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 1.1148546234180543,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -21.36853120004957
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 16.260709826572988
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 14.638949076421206
+          }
+        ]
+      },
+      "delayProbability": 0.006569862551168148,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767707100",
+      "predictionSec": 1.7309324495282916,
+      "predicted_delay_s": 1.7309324495282916,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 3.3290712994443137,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 4,
+            "shapValueSec": -24.504476362182288
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 17.639731922011393
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 16.81759264259321
+          }
+        ]
+      },
+      "delayProbability": 0.0036087140128983957,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122658_1767707400",
+      "predictionSec": 0.41989575673502644,
+      "predicted_delay_s": 0.41989575673502644,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 3.178446509649037,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -17.849819570939353
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 14.70996522265185
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 11.932290647711831
+          }
+        ]
+      },
+      "delayProbability": 0.010516516997419133,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767709800",
+      "predictionSec": 51.0516642981068,
+      "predicted_delay_s": 51.0516642981068,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 132.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -16.257677084770762,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 132.0,
+            "shapValueSec": -33.41901839242081
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 132.0,
+            "shapValueSec": -13.673456114265345
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -6.047197058097995
+          }
+        ]
+      },
+      "delayProbability": 0.1578291125801937,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767709800",
+      "predictionSec": -8.654672273915779,
+      "predicted_delay_s": -8.654672273915779,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 4.4346120731346375,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 3,
+            "shapValueSec": -25.92873841181155
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 15.051259445176076
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 9.33918167192337
+          }
+        ]
+      },
+      "delayProbability": 0.0297834723234636,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767710100",
+      "predictionSec": 15.121563661474056,
+      "predicted_delay_s": 15.121563661474056,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 108.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -23.237837987752044,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -28.39984206981647
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 108.0,
+            "shapValueSec": -19.02442341000364
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 840.0,
+            "shapValueSec": -10.665345818615503
+          }
+        ]
+      },
+      "delayProbability": 0.032393238367457264,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767710100",
+      "predictionSec": -2.321858519028444,
+      "predicted_delay_s": -2.321858519028444,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -3.3897266923107203,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 10.234824604596831
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 7.868747115412257
+          },
+          {
+            "feature": "sp_approach_speed_3m_mps",
+            "label": "Скорость приближения за 3 мин, м/с",
+            "value": null,
+            "shapValueSec": -5.484716494388495
+          }
+        ]
+      },
+      "delayProbability": 0.025456063029031823,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767710400",
+      "predictionSec": -32.6723424798802,
+      "predicted_delay_s": -32.6723424798802,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 59.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -53.66178382968703,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -37.60462895074236
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 59.0,
+            "shapValueSec": 17.587598212178474
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 59.0,
+            "shapValueSec": -6.442540859290926
+          }
+        ]
+      },
+      "delayProbability": 0.04089379687957841,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767710400",
+      "predictionSec": -14.541950455611357,
+      "predicted_delay_s": -14.541950455611357,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -276.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 61.842448680237595,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -276.0,
+            "shapValueSec": 146.33244564421298
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 276.0,
+            "shapValueSec": 39.583431662394084
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 25.250710609882365
+          }
+        ]
+      },
+      "delayProbability": 0.08799935884439206,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767710700",
+      "predictionSec": -28.373742226589634,
+      "predicted_delay_s": -28.373742226589634,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -56.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 6.263151123444189,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -56.0,
+            "shapValueSec": 31.78941865886996
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 9.723285402395137
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -8.59861035896062
+          }
+        ]
+      },
+      "delayProbability": 0.011765308777358886,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767710700",
+      "predictionSec": -23.889236709633437,
+      "predicted_delay_s": -23.889236709633437,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 35.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -23.92376819293503,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 4,
+            "shapValueSec": -41.66995723763034
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 35.0,
+            "shapValueSec": 21.70476033628429
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -3.4492845630140727
+          }
+        ]
+      },
+      "delayProbability": 0.016002311842675355,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767711000",
+      "predictionSec": -64.45098239684789,
+      "predicted_delay_s": -64.45098239684789,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -83.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 6.9852600690613365,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -83.0,
+            "shapValueSec": 33.54807210832635
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -22.578855680294577
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 12.145528158397356
+          }
+        ]
+      },
+      "delayProbability": 0.00628067723023957,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767711000",
+      "predictionSec": 78.48268679995084,
+      "predicted_delay_s": 78.48268679995084,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 140.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 8.708483367488348,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 140.0,
+            "shapValueSec": -33.0499178848146
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 140.0,
+            "shapValueSec": -16.79281695926546
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -8.83207467111911
+          }
+        ]
+      },
+      "delayProbability": 0.10691800036916453,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767711300",
+      "predictionSec": 8.982591618206044,
+      "predicted_delay_s": 8.982591618206044,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 18.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -11.871660734979452,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 18.0,
+            "shapValueSec": 9.65507669123748
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 9.491671759735041
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 720.0,
+            "shapValueSec": -4.741509045448706
+          }
+        ]
+      },
+      "delayProbability": 0.2605247700768096,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767711300",
+      "predictionSec": -64.05890374806177,
+      "predicted_delay_s": -64.05890374806177,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -78.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 0.07294269632036077,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -78.0,
+            "shapValueSec": 25.111441011935526
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 8.71182933035898
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 780.0,
+            "shapValueSec": -8.404129734338316
+          }
+        ]
+      },
+      "delayProbability": 0.01323501914151554,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767713400",
+      "predictionSec": 269.72706086802407,
+      "predicted_delay_s": 269.72706086802407,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 264.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 41.11152264626658,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 264.0,
+            "shapValueSec": -26.642545078284286
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 24.01185636479801
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 264.0,
+            "shapValueSec": -21.202786012417942
+          }
+        ]
+      },
+      "delayProbability": 0.7800523947992742,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767713400",
+      "predictionSec": 0.17085470798597413,
+      "predicted_delay_s": 0.17085470798597413,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -36.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 11.597771112313005,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -36.0,
+            "shapValueSec": 18.553462212012274
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 9.99954726171517
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 7.571061174283865
+          }
+        ]
+      },
+      "delayProbability": 0.05348093767962385,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767713700",
+      "predictionSec": 332.82241095026654,
+      "predicted_delay_s": 332.82241095026654,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 318.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 54.43626580991525,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 318.0,
+            "shapValueSec": -32.59274397166868
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 28.04130957255439
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 318.0,
+            "shapValueSec": -23.511433408196083
+          }
+        ]
+      },
+      "delayProbability": 0.8972565244025167,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767713700",
+      "predictionSec": -20.79678344679097,
+      "predicted_delay_s": -20.79678344679097,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -63.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 9.22183302155539,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -63.0,
+            "shapValueSec": 26.813824975342097
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 10.57039487516564
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 7.148150733484223
+          }
+        ]
+      },
+      "delayProbability": 0.12912462284601917,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767714000",
+      "predictionSec": -17.02805301508929,
+      "predicted_delay_s": -17.02805301508929,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -49.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 0.7972610721122422,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -49.0,
+            "shapValueSec": 23.513986249476055
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 12.001332238007945
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 7.210354477652811
+          }
+        ]
+      },
+      "delayProbability": 0.26186013918157897,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767714000",
+      "predictionSec": 295.83170562513686,
+      "predicted_delay_s": 295.83170562513686,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 289.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 40.029016874355,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 289.0,
+            "shapValueSec": -27.564624265197647
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 24.10364871403675
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 289.0,
+            "shapValueSec": -18.18534864571894
+          }
+        ]
+      },
+      "delayProbability": 0.9175881433634997,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767714300",
+      "predictionSec": 179.00402418703084,
+      "predicted_delay_s": 179.00402418703084,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 289.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 8.641378224300809,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 289.0,
+            "shapValueSec": -38.27746907613259
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 289.0,
+            "shapValueSec": -36.26057194632229
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -32.548325962476746
+          }
+        ]
+      },
+      "delayProbability": 0.8792067954068924,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767714600",
+      "predictionSec": -36.81610112618594,
+      "predicted_delay_s": -36.81610112618594,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 6.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -28.458248205126694,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -32.206358150930406
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 6.0,
+            "shapValueSec": 16.184976633796012
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 6.0,
+            "shapValueSec": 13.21451564841342
+          }
+        ]
+      },
+      "delayProbability": 0.037209330802765256,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767714600",
+      "predictionSec": 350.4461279012694,
+      "predicted_delay_s": 350.4461279012694,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 399.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 26.66896621680017,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 399.0,
+            "shapValueSec": -35.363971489029915
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 399.0,
+            "shapValueSec": -35.159256312585676
+          },
+          {
+            "feature": "mean_receive_delay",
+            "label": "Средняя задержка доставки за 15 мин, с",
+            "value": 2.366793838150289,
+            "shapValueSec": 6.851376538423095
+          }
+        ]
+      },
+      "delayProbability": 0.8710836877413282,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767714900",
+      "predictionSec": 287.3278892924119,
+      "predicted_delay_s": 287.3278892924119,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 266.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 49.7804956461587,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 22.833927750927806
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 266.0,
+            "shapValueSec": -22.225812791825796
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 266.0,
+            "shapValueSec": -17.509734260510495
+          }
+        ]
+      },
+      "delayProbability": 0.9755541113942056,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133300_1767714900",
+      "predictionSec": 9.734517266488815,
+      "predicted_delay_s": 9.734517266488815,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 66.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -20.13003127220066,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 2,
+            "shapValueSec": -42.815312978530805
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 66.0,
+            "shapValueSec": 25.057204665615487
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 66.0,
+            "shapValueSec": -6.826356096056871
+          }
+        ]
+      },
+      "delayProbability": 0.08910628852630341,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767717000",
+      "predictionSec": -21.525169940265215,
+      "predicted_delay_s": -21.525169940265215,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -14.250284424922139,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -16.341596204114264
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.070848856678985
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 9.546848884430522
+          }
+        ]
+      },
+      "delayProbability": 0.0208561725623154,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767717300",
+      "predictionSec": -20.125910862704917,
+      "predicted_delay_s": -20.125910862704917,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -10.610762589479,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -18.332972343010116
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.098845183277096
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 9.269965938845424
+          }
+        ]
+      },
+      "delayProbability": 0.035324294478755396,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767717600",
+      "predictionSec": -28.358577602616556,
+      "predicted_delay_s": -28.358577602616556,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -16.07683514741933,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -19.25880491962609
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 10.294740459717595
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 8.233309057049615
+          }
+        ]
+      },
+      "delayProbability": 0.029605241286591484,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122613_1767718800",
+      "predictionSec": 95.55380089149719,
+      "predicted_delay_s": 95.55380089149719,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 72.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 1.070313567004554,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 10,
+            "shapValueSec": 38.34093415184422
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 72.0,
+            "shapValueSec": -11.292023145699996
+          },
+          {
+            "feature": "packet_count_15m",
+            "label": "Число пакетов за 15 мин",
+            "value": 220,
+            "shapValueSec": 6.9855633706867355
+          }
+        ]
+      },
+      "delayProbability": 0.2182408688318403,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767720000",
+      "predictionSec": 79.69587461724171,
+      "predicted_delay_s": 79.69587461724171,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 440.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -90.86597968190472,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 440.0,
+            "shapValueSec": -101.1066180929895
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 440.0,
+            "shapValueSec": -95.27057340459727
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 1,
+            "shapValueSec": -61.50996715092858
+          }
+        ]
+      },
+      "delayProbability": 0.28061014007469093,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767720300",
+      "predictionSec": 75.24903936241134,
+      "predicted_delay_s": 75.24903936241134,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 440.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -89.84292236884897,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 440.0,
+            "shapValueSec": -104.77268195034202
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 440.0,
+            "shapValueSec": -96.15157287146258
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 3,
+            "shapValueSec": -62.43279639459713
+          }
+        ]
+      },
+      "delayProbability": 0.3347395199393958,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767722400",
+      "predictionSec": 54.36849773130743,
+      "predicted_delay_s": 54.36849773130743,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": -118.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 91.12430809158614,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": -118.0,
+            "shapValueSec": 63.264001817914775
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 1,
+            "shapValueSec": 20.055690244175207
+          },
+          {
+            "feature": "sin_time",
+            "label": "Время суток: синус",
+            "value": -1.0,
+            "shapValueSec": 9.475484629969815
+          }
+        ]
+      },
+      "delayProbability": 0.0781610248245555,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767722700",
+      "predictionSec": 86.30254367673663,
+      "predicted_delay_s": 86.30254367673663,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 21.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 28.967771841384113,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 11,
+            "shapValueSec": 23.954591279023248
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 21.0,
+            "shapValueSec": 14.594894475245342
+          },
+          {
+            "feature": "sin_time",
+            "label": "Время суток: синус",
+            "value": -0.9997620270799091,
+            "shapValueSec": 9.336273133422257
+          }
+        ]
+      },
+      "delayProbability": 0.19666103547511044,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767723000",
+      "predictionSec": 207.06493635503313,
+      "predicted_delay_s": 207.06493635503313,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 162.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 23.13644624764241,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 45.576878400352925
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 162.0,
+            "shapValueSec": -21.686485176922726
+          },
+          {
+            "feature": "sin_time",
+            "label": "Время суток: синус",
+            "value": -0.9990482215818578,
+            "shapValueSec": 9.589083936298872
+          }
+        ]
+      },
+      "delayProbability": 0.39188539050641275,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767723300",
+      "predictionSec": 243.64475300924315,
+      "predicted_delay_s": 243.64475300924315,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 257.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 38.90617219530577,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 257.0,
+            "shapValueSec": -29.80172308606323
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 257.0,
+            "shapValueSec": -21.567085747269775
+          },
+          {
+            "feature": "sin_time",
+            "label": "Время суток: синус",
+            "value": -0.9978589232386036,
+            "shapValueSec": 10.658376699608729
+          }
+        ]
+      },
+      "delayProbability": 0.5417602363511334,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767723600",
+      "predictionSec": 278.95014849366675,
+      "predicted_delay_s": 278.95014849366675,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 317.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 12.593010841558659,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 317.0,
+            "shapValueSec": -25.870306852240777
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 317.0,
+            "shapValueSec": -24.291664811337686
+          },
+          {
+            "feature": "sin_time",
+            "label": "Время суток: синус",
+            "value": -0.9961946980917455,
+            "shapValueSec": 11.070096368024881
+          }
+        ]
+      },
+      "delayProbability": 0.584134678759803,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "131672_1767723900",
+      "predictionSec": 291.5938130450986,
+      "predicted_delay_s": 291.5938130450986,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 302.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -3.4957234917148647,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 49.28699397418013
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 302.0,
+            "shapValueSec": -32.113148997662506
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 302.0,
+            "shapValueSec": -12.533321387365763
+          }
+        ]
+      },
+      "delayProbability": 0.7000232429094448,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "133957_1767724200",
+      "predictionSec": 263.7171768524992,
+      "predicted_delay_s": 263.7171768524992,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 193.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 38.45122881707697,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 57.39031814801447
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 193.0,
+            "shapValueSec": -21.026896172641177
+          },
+          {
+            "feature": "cos_time",
+            "label": "Время суток: косинус",
+            "value": 0.13052619222005213,
+            "shapValueSec": 7.45351311238722
+          }
+        ]
+      },
+      "delayProbability": 0.6247988867290801,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767727800",
+      "predictionSec": 244.3625640068755,
+      "predicted_delay_s": 244.3625640068755,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 192.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 39.037226078767205,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 53.11051145295177
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 192.0,
+            "shapValueSec": -20.962417779521832
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 192.0,
+            "shapValueSec": -7.271768692983369
+          }
+        ]
+      },
+      "delayProbability": 0.7808159442622739,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767728100",
+      "predictionSec": 307.65981505216587,
+      "predicted_delay_s": 307.65981505216587,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 278.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 32.037752170480566,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 49.07674915449338
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 278.0,
+            "shapValueSec": -26.516958839656542
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 278.0,
+            "shapValueSec": -13.386740380813228
+          }
+        ]
+      },
+      "delayProbability": 0.9340865967770342,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767728400",
+      "predictionSec": 169.81532392474213,
+      "predicted_delay_s": 169.81532392474213,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 229.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 3.33085206128856,
+        "factors": [
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 229.0,
+            "shapValueSec": -30.06731422184015
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 229.0,
+            "shapValueSec": -26.251004446862467
+          },
+          {
+            "feature": "gps_time",
+            "label": "Время GPS последнего пакета, Unix-секунды",
+            "value": 1767728396.0,
+            "shapValueSec": 5.353777584494421
+          }
+        ]
+      },
+      "delayProbability": 0.9148145730008151,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767728700",
+      "predictionSec": 280.11965730914164,
+      "predicted_delay_s": 280.11965730914164,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 295.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 16.44430201720786,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 295.0,
+            "shapValueSec": -26.467947873119936
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 25.723235764258003
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 295.0,
+            "shapValueSec": -19.028945546865916
+          }
+        ]
+      },
+      "delayProbability": 0.9680906735189577,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767729000",
+      "predictionSec": 139.2861267645249,
+      "predicted_delay_s": 139.2861267645249,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 104.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 13.255797730126872,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 35.54486776126138
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 104.0,
+            "shapValueSec": -7.761245320551914
+          },
+          {
+            "feature": "unit_id",
+            "label": "Идентификатор бортового устройства",
+            "value": "1012706",
+            "shapValueSec": 5.797693646026914
+          }
+        ]
+      },
+      "delayProbability": 0.8159974512059143,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "132430_1767729300",
+      "predictionSec": 92.72470749845124,
+      "predicted_delay_s": 92.72470749845124,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 88.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -8.46532564940685,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 30.039034791198606
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 88.0,
+            "shapValueSec": -9.873959522910845
+          },
+          {
+            "feature": "unit_id",
+            "label": "Идентификатор бортового устройства",
+            "value": "1012706",
+            "shapValueSec": 4.575944931908682
+          }
+        ]
+      },
+      "delayProbability": 0.5022199441971005,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767731400",
+      "predictionSec": 7.0140011856857685,
+      "predicted_delay_s": 7.0140011856857685,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 5.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -5.176543061067598,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 7.758462589545326
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 5.0,
+            "shapValueSec": 5.732744188380519
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 5.0,
+            "shapValueSec": 5.2503245211658385
+          }
+        ]
+      },
+      "delayProbability": 0.09487867181198496,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767731700",
+      "predictionSec": -4.713113121550173,
+      "predicted_delay_s": -4.713113121550173,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 2.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -20.218076569818884,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 10,
+            "shapValueSec": 23.951976412110348
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 2.0,
+            "shapValueSec": 5.902639291018854
+          },
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 720.0,
+            "shapValueSec": -4.798665202522151
+          }
+        ]
+      },
+      "delayProbability": 0.15464390395419625,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767732000",
+      "predictionSec": 16.567885901587424,
+      "predicted_delay_s": 16.567885901587424,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 4.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -5.6432743112145936,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 10,
+            "shapValueSec": 29.646449636246114
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 4.0,
+            "shapValueSec": 4.7055586902944535
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -4.589861061400233
+          }
+        ]
+      },
+      "delayProbability": 0.09076158742033057,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767732300",
+      "predictionSec": 8.697042012690442,
+      "predicted_delay_s": 8.697042012690442,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 2.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 5.423840792255962,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 22.606497847742833
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -5.7665547332612075
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 1,
+            "shapValueSec": -4.015754841708822
+          }
+        ]
+      },
+      "delayProbability": 0.03617869432993053,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767732600",
+      "predictionSec": 5.554174978504305,
+      "predicted_delay_s": 5.554174978504305,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -16.21512650974377,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 10,
+            "shapValueSec": 19.71460726591126
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 7.563005565650677
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 6.0426757090244605
+          }
+        ]
+      },
+      "delayProbability": 0.0596684142660368,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "122048_1767732900",
+      "predictionSec": 9.7019360668478,
+      "predicted_delay_s": 9.7019360668478,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -7.17594501533949,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 16.22871276648274
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 6.893368287806616
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 5.306787080236268
+          }
+        ]
+      },
+      "delayProbability": 0.04375410407423994,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767733200",
+      "predictionSec": 271.8107834755729,
+      "predicted_delay_s": 271.8107834755729,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 253.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 30.60739344913362,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 9,
+            "shapValueSec": 40.279151270509296
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 253.0,
+            "shapValueSec": -25.22898304654708
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 253.0,
+            "shapValueSec": -15.295791145184655
+          }
+        ]
+      },
+      "delayProbability": 0.9123539125547004,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767733500",
+      "predictionSec": 302.6803418915194,
+      "predicted_delay_s": 302.6803418915194,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 288.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 47.05906329749034,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 288.0,
+            "shapValueSec": -23.608696841594153
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 22.124478023703574
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 288.0,
+            "shapValueSec": -19.34351553574202
+          }
+        ]
+      },
+      "delayProbability": 0.9692729524525369,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767733800",
+      "predictionSec": 367.170331762902,
+      "predicted_delay_s": 367.170331762902,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 355.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 26.944303886222986,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 11,
+            "shapValueSec": 48.73458655916317
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 355.0,
+            "shapValueSec": -33.717866306008894
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 355.0,
+            "shapValueSec": -18.23970532413695
+          }
+        ]
+      },
+      "delayProbability": 0.9600004451978834,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767734100",
+      "predictionSec": 410.6970979325583,
+      "predicted_delay_s": 410.6970979325583,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 434.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 6.952382570300642,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 13,
+            "shapValueSec": 52.09069171553591
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 434.0,
+            "shapValueSec": -43.239358809505624
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 434.0,
+            "shapValueSec": -27.555630491434297
+          }
+        ]
+      },
+      "delayProbability": 0.9717388652711276,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767734400",
+      "predictionSec": 396.3346310116931,
+      "predicted_delay_s": 396.3346310116931,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 434.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -0.9018528598855902,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 12,
+            "shapValueSec": 46.243373437303106
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 434.0,
+            "shapValueSec": -44.15806863521884
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 434.0,
+            "shapValueSec": -27.29783387816724
+          }
+        ]
+      },
+      "delayProbability": 0.9628000392510294,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "134040_1767734700",
+      "predictionSec": 410.2987040962907,
+      "predicted_delay_s": 410.2987040962907,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 434.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 12.293230689981055,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 12,
+            "shapValueSec": 57.458188043646665
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 434.0,
+            "shapValueSec": -49.288962324935085
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 434.0,
+            "shapValueSec": -32.61276526006359
+          }
+        ]
+      },
+      "delayProbability": 0.8809743618160113,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767736800",
+      "predictionSec": -0.2835688136321537,
+      "predicted_delay_s": -0.2835688136321537,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -0.4979382312735776,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 16.291597699124424
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -15.906915597874859
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 11.380674368730192
+          }
+        ]
+      },
+      "delayProbability": 0.1146527813613566,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767737100",
+      "predictionSec": 15.641138667162895,
+      "predicted_delay_s": 15.641138667162895,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -7.881994759792576,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 17.05990119467308
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 11.325156925459234
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 6.689062359161473
+          }
+        ]
+      },
+      "delayProbability": 0.21318063130322432,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767737400",
+      "predictionSec": -8.09565893765368,
+      "predicted_delay_s": -8.09565893765368,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -18.894005786766407,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 9.20261844481829
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 6.873679860234658
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 6.273035596398113
+          }
+        ]
+      },
+      "delayProbability": 0.14062263382175466,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767737700",
+      "predictionSec": -0.5842279495813609,
+      "predicted_delay_s": -0.5842279495813609,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -13.339775208544555,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.329087384336821
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 7.736465687656827
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 5.240981239307871
+          }
+        ]
+      },
+      "delayProbability": 0.12500592129714883,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767738000",
+      "predictionSec": 5.0985893244946485,
+      "predicted_delay_s": 5.0985893244946485,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 8.107825727138332,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -20.203001461434145
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 14.973636720102387
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 13.771115391026393
+          }
+        ]
+      },
+      "delayProbability": 0.06187509562118532,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767738300",
+      "predictionSec": 5.678323917822503,
+      "predicted_delay_s": 5.678323917822503,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -4.0060903137082065,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 10.994221308464583
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 5.283716439125108
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 4.957463536279343
+          }
+        ]
+      },
+      "delayProbability": 0.12236893967053457,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767742200",
+      "predictionSec": 7.615394939463132,
+      "predicted_delay_s": 7.615394939463132,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 5.991132412325772,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 10.450564508489146
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 6.420323755279943
+          },
+          {
+            "feature": "is_early_now",
+            "label": "ТС сейчас опережает график",
+            "value": 0,
+            "shapValueSec": -3.695638684293397
+          }
+        ]
+      },
+      "delayProbability": 0.08834730277092062,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767742500",
+      "predictionSec": 26.72627997815486,
+      "predicted_delay_s": 26.72627997815486,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 26.064238540415936,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 17.784737697917144
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -16.32313310221104
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 10.751423894371133
+          }
+        ]
+      },
+      "delayProbability": 0.16949450144894185,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767742800",
+      "predictionSec": 15.908977130033083,
+      "predicted_delay_s": 15.908977130033083,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 21.970038418058778,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 6,
+            "shapValueSec": -13.724907027992346
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 11.87724056143802
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 7.3375922308669645
+          }
+        ]
+      },
+      "delayProbability": 0.14349268973618626,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767743100",
+      "predictionSec": -5.7993239763721895,
+      "predicted_delay_s": -5.7993239763721895,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": -0.501847551504369,
+        "factors": [
+          {
+            "feature": "forecast_horizon_s",
+            "label": "Время до целевой остановки, с",
+            "value": 840.0,
+            "shapValueSec": -9.779486374094617
+          },
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 8,
+            "shapValueSec": 8.251656864489567
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 7.781340137075553
+          }
+        ]
+      },
+      "delayProbability": 0.2950159493661264,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767743400",
+      "predictionSec": 10.566998104475754,
+      "predicted_delay_s": 10.566998104475754,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 2.032329064425621,
+        "factors": [
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 10.618915800371413
+          },
+          {
+            "feature": "is_late_now",
+            "label": "ТС сейчас опаздывает",
+            "value": 0,
+            "shapValueSec": 5.527402595975626
+          },
+          {
+            "feature": "packet_frequency",
+            "label": "Число пакетов в минуту за 15 мин",
+            "value": 15.6,
+            "shapValueSec": 3.9393376960414157
+          }
+        ]
+      },
+      "delayProbability": 0.25619878988103884,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    },
+    {
+      "sampleId": "130072_1767743700",
+      "predictionSec": -2.2316985427167264,
+      "predicted_delay_s": -2.2316985427167264,
+      "explanation": {
+        "method": "TreeSHAP",
+        "explains": "regression_correction_seconds",
+        "currentDeviationSec": 0.0,
+        "baseValueSec": -11.550987052338325,
+        "remainingShapValueSec": 5.297652783114735,
+        "factors": [
+          {
+            "feature": "stops_to_target",
+            "label": "Число плановых остановок до цели",
+            "value": 5,
+            "shapValueSec": -20.59341919204612
+          },
+          {
+            "feature": "cur_dev_s",
+            "label": "Текущее отклонение от расписания, с",
+            "value": 0.0,
+            "shapValueSec": 13.98759186985069
+          },
+          {
+            "feature": "abs_cur_dev",
+            "label": "Модуль текущего отклонения, с",
+            "value": 0.0,
+            "shapValueSec": 10.627463048702293
+          }
+        ]
+      },
+      "delayProbability": 0.09871274447320076,
+      "delayThresholdSec": 120,
+      "probabilityMethod": "sigmoid"
+    }
+  ]
+}

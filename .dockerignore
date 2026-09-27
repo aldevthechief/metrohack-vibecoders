@@ -1,0 +1,14 @@
+.git
+dataset/*
+!dataset/validate/
+dataset/validate/*
+!dataset/validate/schedule_plan.csv
+!dataset/validate/points.csv
+!dataset/validate/traffic.csv
+features
+ml_service
+frontend/node_modules
+frontend/dist
+frontend/.env
+frontend/.env.local
+frontend/vite-dev.log
