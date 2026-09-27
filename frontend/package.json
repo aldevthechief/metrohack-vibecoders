@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0 --configLoader runner",
     "build": "vite build --configLoader runner",
     "preview": "vite preview --host 0.0.0.0",
-    "data:demo": "python scripts/build_demo_data.py"
+    "data:demo": "python scripts/build_demo_data.py && python scripts/build_demo_fleet.py"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

@@ -1,15 +1,17 @@
+import asyncio
 import httpx
 import json
 import os
 import logging
 from csv import DictReader
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, suppress
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
 from app.models.dashboard import DashboardResponse
+from app.models.fleet import FleetResponse
 from app.models.incident import Incident
 from app.models.schedule import CurrentDeviation, ObservedArrival, PredictionContext, SchedulePoint
 from app.models.telemetry import NdtpUnitMapping, TelemetryPoint
@@ -17,6 +19,7 @@ from app.models.telemetry import NdtpUnitMapping, TelemetryPoint
 from app.services.dashboard_service import DashboardService
 from app.services.incident_service import IncidentService
 from app.services.ndtp_service import NdtpServer
+from app.services.ndtp_emulator_service import maintain_emulator
 from app.services.prediction_context_service import PredictionContextService
 from app.services.prediction_service import PredictionService
 from app.services.processing_service import ProcessingService
@@ -26,6 +29,8 @@ from app.services.telemetry_service import TelemetryService
 from app.services.vehicle_state_service import VehicleStateService
 
 from app.services.features.feature_service import FeatureService
+from app.services.fleet_service import FleetService
+from app.services.historical_replay_service import HistoricalReplayService
 from app.services.features.schedule_features import ScheduleFeatureService
 from app.services.features.spatial_features import SpatialFeatureService
 from app.services.features.telemetry_features import TelemetryFeatureService
@@ -58,10 +63,32 @@ async def lifespan(_: FastAPI):
                         mapping.tr_id, float(deviation), source="configured"
                     )
 
+    traffic_path = os.getenv("NDTP_TRAFFIC_PATH")
+    if traffic_path:
+        mapped, ambiguous = ndtp_server.load_traffic_mappings(Path(traffic_path))
+        logging.getLogger(__name__).info(
+            "Loaded %s dated unit/trip mappings from %s; %s ambiguous unit-days ignored",
+            mapped, traffic_path, ambiguous,
+        )
+
     await ndtp_server.start()
+    emulator_task = None
+    emulator_url = os.getenv("NDTP_EMULATOR_URL")
+    if emulator_url:
+        config_path = Path(os.getenv("NDTP_EMULATOR_CONFIG_PATH", "/app/ndtp_emulator.json"))
+        with config_path.open(encoding="utf-8") as stream:
+            emulator_config = json.load(stream)
+        fleet_service.set_emulator_unit_ids({
+            str(unit["unitId"]) for unit in emulator_config["units"]
+        })
+        emulator_task = asyncio.create_task(maintain_emulator(emulator_url, emulator_config))
     try:
         yield
     finally:
+        if emulator_task:
+            emulator_task.cancel()
+            with suppress(asyncio.CancelledError):
+                await emulator_task
         await ndtp_server.close()
 
 
@@ -125,6 +152,12 @@ dashboard_service = DashboardService(
 )
 
 prediction_context_service = PredictionContextService()
+fleet_service = FleetService(
+    vehicle_state_service=vehicle_state_service,
+    schedule_service=schedule_service,
+    prediction_context_service=prediction_context_service,
+    dashboard_service=dashboard_service,
+)
 
 stop_arrival_service = StopArrivalService(
     vehicle_state_service=vehicle_state_service,
@@ -146,6 +179,12 @@ ndtp_server = NdtpServer(
     processing_service=processing_service,
     host=os.getenv("NDTP_HOST", "0.0.0.0"),
     port=int(os.getenv("NDTP_PORT", "9201")),
+)
+historical_replay = HistoricalReplayService(
+    schedule=schedule_service,
+    points_path=Path(os.getenv("REPLAY_POINTS_PATH", str(Path(__file__).resolve().parents[2] / "dataset/validate/points.csv"))),
+    traffic_path=Path(os.getenv("REPLAY_TRAFFIC_PATH", str(Path(__file__).resolve().parents[2] / "dataset/validate/traffic.csv"))),
+    ml_url=os.getenv("ML_SERVICE_URL", "http://127.0.0.1:8001"),
 )
 
 
@@ -196,7 +235,7 @@ async def add_telemetry(
 
 @app.post("/api/v1/ndtp/units")
 async def register_ndtp_unit(mapping: NdtpUnitMapping) -> dict[str, str]:
-    ndtp_server.register_unit(mapping.unit_id, mapping.tr_id)
+    ndtp_server.register_unit(mapping.unit_id, mapping.tr_id, manual=True)
     return {
         "status": "ok",
         "unit_id": str(mapping.unit_id),
@@ -209,9 +248,24 @@ async def get_ndtp_status() -> dict:
     return ndtp_server.status()
 
 
+@app.post("/api/v1/replay/start")
+async def start_historical_replay() -> dict:
+    return historical_replay.start()
+
+
+@app.get("/api/v1/replay")
+async def get_historical_replay() -> dict:
+    return historical_replay.status()
+
+
 @app.get("/api/v1/vehicles")
 async def get_vehicles() -> list[str]:
     return vehicle_state_service.get_vehicle_ids()
+
+
+@app.get("/api/v1/fleet", response_model=FleetResponse)
+async def get_fleet() -> FleetResponse:
+    return fleet_service.build_response()
 
 
 @app.get("/api/v1/vehicles/{tr_id}/latest")
@@ -466,20 +520,4 @@ async def get_vehicle_incident(
 )
 async def get_dashboard() -> DashboardResponse:
     records = dashboard_service.get_records()
-    if records:
-        return dashboard_service.build_response(records=records)
-
-    default_replay_path = (
-        Path(__file__).resolve().parents[2] / "frontend" / "src" / "data" / "demo.json"
-    )
-    replay_path = Path(os.getenv("DASHBOARD_REPLAY_PATH", str(default_replay_path)))
-    if replay_path.is_file():
-        with replay_path.open(encoding="utf-8") as stream:
-            replay = json.load(stream)
-        return DashboardResponse.model_validate({
-            "source": "submission-replay",
-            "date": replay.get("date", ""),
-            "records": replay["records"],
-        })
-
-    return dashboard_service.build_response(records=[])
+    return dashboard_service.build_response(records=records)

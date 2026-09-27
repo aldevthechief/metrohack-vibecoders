@@ -9,7 +9,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app, ndtp_server, prediction_service
-from app.services.ndtp_service import MOSCOW, NdtpProtocolError, crc16_modbus, decode_frame
+from app.services.ndtp_service import MOSCOW, NdtpProtocolError, NdtpServer, crc16_modbus, decode_frame
 
 
 def make_frame(unit_id: int, service_id: int, message_type: int, body: bytes, request_id: int = 1) -> bytes:
@@ -51,6 +51,28 @@ def test_decode_and_reject_bad_crc():
     corrupt = frame[:-1] + bytes([frame[-1] ^ 1])
     with pytest.raises(NdtpProtocolError, match="CRC"):
         decode_frame(corrupt[:15], corrupt[15:])
+
+
+def test_traffic_mapping_uses_packet_date_and_rejects_ambiguous_unit(tmp_path):
+    mapping_file = tmp_path / "traffic.csv"
+    mapping_file.write_text(
+        "unit_id,tr_id,event_time\n"
+        "123,trip-a,2026-01-06 08:00:00\n"
+        "123,trip-a,2026-01-06 08:05:00\n"
+        "123,trip-b,2026-01-07 08:00:00\n"
+        "456,trip-c,2026-01-06 08:00:00\n"
+        "456,trip-d,2026-01-06 08:05:00\n",
+        encoding="utf-8",
+    )
+    server = NdtpServer(processing_service=None, host="127.0.0.1", port=0)
+    server.register_unit(123, "old-static-trip")
+    assert server.load_traffic_mappings(mapping_file) == (2, 1)
+    assert server.resolve_unit(123, datetime(2026, 1, 6, 8)) == "trip-a"
+    assert server.resolve_unit(123, datetime(2026, 1, 7, 8)) == "trip-b"
+    assert server.resolve_unit(123, datetime(2026, 1, 8, 8)) == "123"
+    assert server.resolve_unit(456, datetime(2026, 1, 6, 8)) == "456"
+    server.register_unit(456, "confirmed-trip", manual=True)
+    assert server.resolve_unit(456, datetime(2026, 1, 6, 8)) == "confirmed-trip"
 
 
 def test_tcp_packet_reaches_dashboard(monkeypatch):
@@ -104,5 +126,41 @@ def test_tcp_packet_reaches_dashboard(monkeypatch):
             assert record["delayProbability"] == 0.82
             assert record["reasonFactors"][0]["feature"] == "speed_now"
             assert record["estimatedArrival"] is not None
+    finally:
+        ndtp_server.port = original_port
+
+
+def test_two_ndtp_units_appear_in_fleet_without_predictions():
+    original_port = ndtp_server.port
+    ndtp_server.port = 0
+    try:
+        with TestClient(app) as client:
+            units = (20400001, 20400002)
+            assert client.post("/api/v1/ndtp/units", json={
+                "unit_id": units[0], "tr_id": "mapped-fleet-vehicle"
+            }).status_code == 200
+            before = client.get("/api/v1/ndtp/status").json()["received_packets"]
+            now = datetime.now(MOSCOW).replace(tzinfo=None, microsecond=0)
+            for unit_id in units:
+                with socket.create_connection(("127.0.0.1", ndtp_server.port), timeout=2) as stream:
+                    stream.sendall(handshake(unit_id) + realtime(
+                        unit_id, int(now.replace(tzinfo=MOSCOW).timestamp())
+                    ))
+            deadline = time.monotonic() + 5
+            while time.monotonic() < deadline:
+                status = client.get("/api/v1/ndtp/status").json()
+                if status["received_packets"] >= before + 2:
+                    break
+                time.sleep(0.02)
+            assert status["received_packets"] == before + 2
+
+            fleet = client.get("/api/v1/fleet").json()
+            vehicles = {item["vehicleId"]: item for item in fleet["vehicles"]}
+            assert vehicles["mapped-fleet-vehicle"]["unitId"] == str(units[0])
+            assert vehicles[str(units[1])]["unitId"] == str(units[1])
+            for vehicle_id in ("mapped-fleet-vehicle", str(units[1])):
+                assert vehicles[vehicle_id]["position"] == pytest.approx([37.617321, 55.7551234])
+                assert vehicles[vehicle_id]["predictionStatus"] == "no-schedule"
+            assert client.get("/api/dashboard").json()["source"] == "backend-live"
     finally:
         ndtp_server.port = original_port

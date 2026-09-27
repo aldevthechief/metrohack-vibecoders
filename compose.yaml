@@ -1,4 +1,10 @@
 services:
+  ndtp-emulator:
+    image: ndtp-telemetry-emulator:1.0
+    pull_policy: never
+    ports:
+      - "127.0.0.1:18080:18080"
+    restart: unless-stopped
   ml:
     build: ./ml_service
     ports:
@@ -11,11 +17,13 @@ services:
       ML_SERVICE_URL: http://ml:8001
       NDTP_HOST: 0.0.0.0
       NDTP_PORT: 9201
+      NDTP_EMULATOR_URL: http://ndtp-emulator:18080
     ports:
       - "127.0.0.1:8000:8000"
       - "9201:9201"
     depends_on:
       - ml
+      - ndtp-emulator
   frontend:
     build: ./frontend
     ports:

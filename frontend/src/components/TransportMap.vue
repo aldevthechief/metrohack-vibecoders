@@ -18,6 +18,7 @@ let overlay
 let tileLayer
 let tileErrors = 0
 let resizeObserver
+let hasFittedRecords = false
 
 const osmUrl = import.meta.env.VITE_MAP_TILE_URL || 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
 const osmAttribution = import.meta.env.VITE_MAP_ATTRIBUTION || '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
@@ -51,11 +52,16 @@ function setTileLayer(provider) {
 }
 
 const latLng = ([lon, lat]) => [lat, lon]
-const risk = (record) => ['high', 'medium', 'low'].includes(record.riskLevel) ? record.riskLevel : record.predictionSec > 120 ? 'high' : record.predictionSec >= 60 ? 'medium' : 'low'
+const risk = (record) => {
+  if (record.fleetStatus === 'stale') return 'stale'
+  if (['high', 'medium', 'low'].includes(record.riskLevel)) return record.riskLevel
+  if (record.predictionSec == null) return 'unknown'
+  return record.predictionSec > 120 ? 'high' : record.predictionSec >= 60 ? 'medium' : 'low'
+}
 
 // Scheduled stops form a useful corridor, but they are not road geometry.
 // A small Douglas–Peucker pass removes minor zigzags while retaining turns.
-function straightenRoute(points, tolerance = 0.0015) {
+function straightenRoute(points, tolerance = 0.0003) {
   if (points.length < 3) return points
   const planar = ([lon, lat]) => [lon * Math.cos(55.75 * Math.PI / 180), lat]
   const distance = (point, start, end) => {
@@ -75,14 +81,66 @@ function straightenRoute(points, tolerance = 0.0015) {
   return [...straightenRoute(points.slice(0, index + 1), tolerance).slice(0, -1), ...straightenRoute(points.slice(index), tolerance)]
 }
 
+function closestRouteSegment(route, position) {
+  if (!map || route.length < 2) return null
+  const zoom = map.getZoom()
+  const point = map.project(latLng(position), zoom)
+  let closest = null
+  for (let index = 0; index < route.length - 1; index += 1) {
+    const start = map.project(latLng(route[index]), zoom)
+    const end = map.project(latLng(route[index + 1]), zoom)
+    const dx = end.x - start.x
+    const dy = end.y - start.y
+    const fraction = dx || dy ? Math.max(0, Math.min(1, ((point.x - start.x) * dx + (point.y - start.y) * dy) / (dx * dx + dy * dy))) : 0
+    const nearest = L.point(start.x + fraction * dx, start.y + fraction * dy)
+    const distance = map.distance(latLng(position), map.unproject(nearest, zoom))
+    if (!closest || distance < closest.distance) closest = { index, distance }
+  }
+  return closest
+}
+
+function directionBetween(from, to) {
+  const start = map.project(latLng(from), map.getZoom())
+  const end = map.project(latLng(to), map.getZoom())
+  return Math.atan2(end.x - start.x, start.y - end.y) * 180 / Math.PI
+}
+
+function vehicleDirection(record) {
+  const trail = record.trail || []
+  if (trail.length > 1 && Number(record.speedKmh) > 3) {
+    for (let index = trail.length - 2; index >= 0; index -= 1) {
+      if (map.distance(latLng(trail[index]), latLng(record.position)) >= 8) {
+        return directionBetween(trail[index], record.position)
+      }
+    }
+  }
+  const route = record.route || []
+  const segment = closestRouteSegment(route, record.position)
+  if (segment && segment.distance <= 200) return directionBetween(route[segment.index], route[segment.index + 1])
+  if (record.targetCoordinate && map.distance(latLng(record.position), latLng(record.targetCoordinate)) > 15) {
+    return directionBetween(record.position, record.targetCoordinate)
+  }
+  if (trail.length > 1) {
+    for (let index = trail.length - 2; index >= 0; index -= 1) {
+      if (map.distance(latLng(trail[index]), latLng(record.position)) >= 8) {
+        return directionBetween(trail[index], record.position)
+      }
+    }
+  }
+  return 0
+}
+
 function vehicleIcon(record) {
   const state = risk(record)
   const vehicleId = String(record.vehicleId).replace(/[^0-9A-Za-z_-]/g, '')
+  const speed = record.speedKmh == null || !Number.isFinite(Number(record.speedKmh))
+    ? '— км/ч' : `${Math.round(Number(record.speedKmh))} км/ч`
+  const direction = vehicleDirection(record)
   return L.divIcon({
     className: 'vehicle-map-icon',
-    html: `<span class="vehicle-map-pin ${state} ${record.sampleId === props.selectedId ? 'selected' : ''}"><span class="vehicle-map-symbol"></span>${vehicleId}</span>`,
-    iconSize: [86, 34],
-    iconAnchor: [43, 17],
+    html: `<span class="vehicle-map-pin ${state} ${record.telemetrySource === 'emulator' ? 'emulator' : ''} ${record.vehicleId === props.selectedId ? 'selected' : ''}"><span class="vehicle-map-card"><span class="vehicle-map-tag">ТС</span><span class="vehicle-map-id">№${vehicleId}</span><span class="vehicle-map-speed">${speed}</span></span><span class="vehicle-map-position" style="transform:rotate(${direction}deg)"><span class="vehicle-map-arrow"></span></span></span>`,
+    iconSize: [188, 70],
+    iconAnchor: [94, 52],
   })
 }
 
@@ -101,16 +159,26 @@ function renderRecords(fit = false) {
   const bounds = []
   for (const record of props.records) {
     if (!record.position) continue
-    const selected = record.sampleId === props.selectedId
+    const selected = record.vehicleId === props.selectedId
     const state = risk(record)
-    const color = state === 'high' ? '#cf303b' : state === 'medium' ? '#d58a2c' : '#2f9275'
+    const color = state === 'high' ? '#cf303b' : state === 'medium' ? '#d58a2c' : state === 'low' ? '#2f9275' : '#627684'
+    if ((record.trail || []).length > 1) {
+      L.polyline(record.trail.map(latLng), {
+        color: '#435e78', weight: selected ? 3 : 2, opacity: selected ? 0.9 : 0.6,
+        interactive: false,
+      }).addTo(overlay)
+    }
     const route = straightenRoute(record.route || [])
-    if (route.length > 1) {
-      L.polyline(route.map(latLng), {
+    const segment = closestRouteSegment(route, record.position)
+    const drawnRoute = segment && segment.distance <= 150
+      ? [...route.slice(0, segment.index + 1), record.position, ...route.slice(segment.index + 1)]
+      : route
+    if (drawnRoute.length > 1) {
+      L.polyline(drawnRoute.map(latLng), {
         color: '#ffffff', weight: selected ? 7 : 6, opacity: selected ? 0.9 : 0.65,
         interactive: false, lineJoin: 'round',
       }).addTo(overlay)
-      L.polyline(route.map(latLng), {
+      L.polyline(drawnRoute.map(latLng), {
         color, weight: selected ? 3.5 : 2.8, opacity: selected ? 0.95 : 0.75,
         interactive: false, lineJoin: 'round',
       }).addTo(overlay)
@@ -127,24 +195,27 @@ function renderRecords(fit = false) {
       bounds.push(latLng(record.targetCoordinate))
     }
     L.marker(latLng(record.position), { icon: vehicleIcon(record), riseOnHover: true, zIndexOffset: 400 })
-      .on('click', () => emit('select', record.sampleId))
-      .bindTooltip(`ТС ${String(record.vehicleId).replace(/[^0-9A-Za-z_-]/g, '')}`, { direction: 'top', offset: [0, -15] })
+      .on('click', () => emit('select', record.vehicleId))
+      .bindTooltip(`ТС ${String(record.vehicleId).replace(/[^0-9A-Za-z_-]/g, '')}${record.telemetrySource === 'emulator' ? ' · эмулятор' : ''}${state === 'stale' ? ' · нет свежего GPS' : ''}`, { direction: 'top', offset: [0, -60] })
       .addTo(overlay)
     bounds.push(latLng(record.position))
   }
   if (fit) {
     const padding = map.getSize().x < 430 ? [68, 68] : [50, 50]
-    if (bounds.length) map.fitBounds(L.latLngBounds(bounds), { padding, maxZoom: 12, animate: false })
+    if (bounds.length) {
+      map.fitBounds(L.latLngBounds(bounds), { padding, maxZoom: 15, animate: false })
+      hasFittedRecords = true
+    }
     else map.setView([55.7512, 37.6184], 10, { animate: false })
   }
 }
 
 function focusSelected() {
-  const record = props.records.find((item) => item.sampleId === props.selectedId)
+  const record = props.records.find((item) => item.vehicleId === props.selectedId)
   if (!record?.position || !map) return
   const positions = [record.position, record.targetCoordinate, ...(record.route || [])].filter(Boolean).map(latLng)
   const padding = map.getSize().x < 430 ? [70, 70] : [54, 54]
-  map.fitBounds(L.latLngBounds(positions), { padding, maxZoom: 13, animate: true, duration: 0.35 })
+  map.fitBounds(L.latLngBounds(positions), { padding, maxZoom: 15, animate: true, duration: 0.35 })
 }
 
 function resetView() { renderRecords(true) }
@@ -156,16 +227,15 @@ onMounted(async () => {
   L.control.zoom({ position: 'topright' }).addTo(map)
   setTileLayer(yandexKey ? 'yandex' : 'osm')
   overlay = L.layerGroup().addTo(map)
-  renderRecords(true)
+  renderRecords(props.records.some((record) => record.position))
   resizeObserver = new ResizeObserver(() => {
     map.invalidateSize({ pan: false })
-    renderRecords(true)
   })
   resizeObserver.observe(element.value)
   nextTick(() => map.invalidateSize())
 })
 onUnmounted(() => { resizeObserver?.disconnect(); map?.remove(); map = null })
-watch(() => props.records, () => renderRecords(true))
+watch(() => props.records, () => renderRecords(!hasFittedRecords && props.records.some((record) => record.position)))
 watch(() => props.selectedId, (value) => { renderRecords(false); if (value) focusSelected() })
 </script>
 

@@ -1,4 +1,4 @@
-"""Build a small, reproducible frontend replay from the supplied validate data.
+"""Build the frontend replay from validate inputs and the bundled ML output.
 
 Only telemetry at or before each prediction timestamp is used. No validate labels
 or future factual schedule fields are read.
@@ -18,7 +18,7 @@ REPO = Path(__file__).resolve().parents[2]
 ROOT = REPO.parent
 DATASET_ROOT = next((path for path in (ROOT / "dataset", REPO / "dataset") if path.exists()), ROOT / "dataset")
 DATASET = DATASET_ROOT / "validate"
-SUBMISSION = next((path for path in (ROOT / "submission.csv", REPO / "submission.csv") if path.exists()), ROOT / "submission.csv")
+PREDICTIONS = REPO / "ml_service" / "research" / "vovchik" / "predictions_validate.json"
 OUTPUT = Path(__file__).resolve().parents[1] / "src" / "data" / "demo.json"
 
 
@@ -47,8 +47,8 @@ def is_valid_location(row):
 
 def main():
     predictions = {
-        row["sample_id"]: float(row["prediction"])
-        for row in rows(SUBMISSION, ";")
+        record["sampleId"]: record
+        for record in json.loads(PREDICTIONS.read_text(encoding="utf-8"))["records"]
     }
     schedule = defaultdict(list)
     stops = {}
@@ -75,6 +75,7 @@ def main():
 
     records = []
     for row in rows(DATASET / "points.csv"):
+        prediction = predictions[row["sample_id"]]
         vehicle_id = row["tr_id"]
         now = datetime.fromisoformat(row["T"])
         target = datetime.fromisoformat(row["target_time_begin"])
@@ -139,7 +140,15 @@ def main():
             "meanSpeedKmh": round(mean_speed, 1) if mean_speed is not None else None,
             "stopFraction": round(stop_fraction, 2) if stop_fraction is not None else None,
             "currentDeviationSec": float(row["cur_dev_s"]),
-            "predictionSec": round(predictions[row["sample_id"]], 1),
+            "predictionSec": prediction["predictionSec"],
+            "delayProbability": prediction["delayProbability"],
+            "estimatedArrival": (target + timedelta(seconds=prediction["predictionSec"])).isoformat(sep=" "),
+            "reasonFactors": prediction["explanation"]["factors"],
+            "riskLevel": (
+                "high" if prediction["predictionSec"] > 120
+                else "medium" if prediction["predictionSec"] >= 60
+                else "low"
+            ),
             "horizonSec": round((target - now).total_seconds()),
             "signal": signal,
             "route": [stop["coordinate"] for stop in route],
@@ -149,7 +158,7 @@ def main():
     records.sort(key=lambda item: (item["timestamp"], item["vehicleId"]))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps({
-        "source": "validate/points.csv + validate/traffic.csv + validate/schedule_plan.csv + submission.csv",
+        "source": "validate/points.csv + validate/traffic.csv + validate/schedule_plan.csv + predictions_validate.json",
         "date": "2026-01-06",
         "records": records,
     }, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

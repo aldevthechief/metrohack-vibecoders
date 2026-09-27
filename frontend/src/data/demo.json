@@ -1,5 +1,5 @@
 {
-  "source": "validate/points.csv + validate/traffic.csv + validate/schedule_plan.csv + submission.csv",
+  "source": "validate/points.csv + validate/traffic.csv + validate/schedule_plan.csv + predictions_validate.json",
   "date": "2026-01-06",
   "records": [
     {

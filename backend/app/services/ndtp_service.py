@@ -1,10 +1,12 @@
 """TCP receiver for the emulator's unencrypted NDTP 6.2 packets."""
 
 import asyncio
+import csv
 import logging
 import struct
 from contextlib import suppress
-from datetime import datetime
+from datetime import date, datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from app.models.telemetry import TelemetryPoint
@@ -97,6 +99,8 @@ class NdtpServer:
         self.port = port
         self._server: asyncio.AbstractServer | None = None
         self._unit_map: dict[int, str] = {}
+        self._manual_unit_map: dict[int, str] = {}
+        self._traffic_unit_map: dict[int, dict[date, str | None]] = {}
         self._clients: set[asyncio.StreamWriter] = set()
         self.connected_clients = 0
         self.received_packets = 0
@@ -120,8 +124,48 @@ class NdtpServer:
             with suppress(ConnectionError, OSError):
                 await writer.wait_closed()
 
-    def register_unit(self, unit_id: int, tr_id: str) -> None:
-        self._unit_map[unit_id] = tr_id
+    def register_unit(self, unit_id: int, tr_id: str, *, manual: bool = False) -> None:
+        (self._manual_unit_map if manual else self._unit_map)[unit_id] = tr_id
+
+    def load_traffic_mappings(self, path: Path) -> tuple[int, int]:
+        """Read unit_id -> tr_id per day from the organizers' traffic CSV.
+
+        A unit can be reused on another day. Conflicting IDs within one day
+        are left unmapped, since picking one would attach GPS to the wrong trip.
+        """
+        mappings: dict[int, dict[date, str | None]] = {}
+        conflicts: set[tuple[int, date]] = set()
+        with path.open(encoding="utf-8-sig", newline="") as stream:
+            rows = csv.DictReader(stream)
+            required = {"unit_id", "tr_id", "event_time"}
+            if not required.issubset(rows.fieldnames or []):
+                raise ValueError(f"{path} must contain unit_id, tr_id and event_time")
+            for row in rows:
+                unit_text = (row["unit_id"] or "").strip()
+                tr_id = (row["tr_id"] or "").strip()
+                event_text = (row["event_time"] or "").strip()
+                if not unit_text or not tr_id or not event_text:
+                    continue
+                unit_id = int(unit_text)
+                event_day = date.fromisoformat(event_text[:10])
+                if not 0 <= unit_id <= 2_147_483_647:
+                    raise ValueError(f"Invalid NDTP unit_id: {unit_id}")
+                by_day = mappings.setdefault(unit_id, {})
+                previous = by_day.get(event_day)
+                if previous is not None and previous != tr_id:
+                    conflicts.add((unit_id, event_day))
+                    by_day[event_day] = None
+                elif event_day not in by_day:
+                    by_day[event_day] = tr_id
+        self._traffic_unit_map = mappings
+        return sum(len(days) for days in mappings.values()) - len(conflicts), len(conflicts)
+
+    def resolve_unit(self, unit_id: int, event_time: datetime) -> str:
+        if unit_id in self._manual_unit_map:
+            return self._manual_unit_map[unit_id]
+        if unit_id in self._traffic_unit_map:
+            return self._traffic_unit_map[unit_id].get(event_time.date()) or str(unit_id)
+        return self._unit_map.get(unit_id, str(unit_id))
 
     def status(self) -> dict:
         return {
@@ -134,6 +178,8 @@ class NdtpServer:
             "rejected_frames": self.rejected_frames,
             "processing_errors": self.processing_errors,
             "unit_map": self._unit_map.copy(),
+            "traffic_mapping_days": sum(len(days) for days in self._traffic_unit_map.values()),
+            "manual_unit_map": self._manual_unit_map.copy(),
         }
 
     async def _handle_client(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
@@ -159,7 +205,7 @@ class NdtpServer:
                 if unit_id != bound_unit or message_type != 101 or telemetry is None:
                     raise NdtpProtocolError("Unexpected NDTP frame after handshake")
 
-                telemetry.tr_id = self._unit_map.get(unit_id, str(unit_id))
+                telemetry.tr_id = self.resolve_unit(unit_id, telemetry.event_time)
                 self.received_packets += 1
                 try:
                     incident = await self._processing_service.process_telemetry(telemetry)
