@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Документация Metrohack &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=57e88ba2" />
+    <script src="_static/documentation_options.js?v=372fde1a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Запуск и проверка" href="guide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/index.html">Справочник Python-кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="guide.html" title="следующая глава">Запуск и проверка</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="metrohack">
+<h1>Документация Metrohack<a class="headerlink" href="#metrohack" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Система принимает транспортную телеметрию, сопоставляет её с расписанием
+и прогнозирует задержку на целевой остановке в окне <strong>(10, 15] минут</strong>.
+Этот сайт объединяет сгенерированный Sphinx-справочник Python-кода
+и спецификации OpenAPI двух сервисов; это материалы для пункта 4 сдачи хакатона.</p>
+<p>Начните с <a class="reference internal" href="guide.html"><span class="doc">Запуск и проверка</span></a>. Для изучения реализации откройте <a class="reference internal" href="architecture.html"><span class="doc">Архитектура и модули</span></a>
+и <a class="reference internal" href="generated/index.html"><span class="doc">Справочник Python-кода</span></a>. Контракты запросов находятся в <a class="reference internal" href="api.html"><span class="doc">HTTP API и Swagger</span></a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Запуск и проверка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#id2">Готовая документация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#id3">Рабочая система</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#swagger">Пробный запрос в Swagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide.html#id4">Если прогнозов нет</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Архитектура и модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id2">Путь данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#backend">Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id3">Исторический режим</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#ml">ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#frontend">Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Данные, признаки и ограничения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data.html#id2">Идентификаторы и единицы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html#id3">Телеметрия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html#id4">Производные признаки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html#id5">Отклонение и риск</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html#id6">Ограничения демонстрации</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">HTTP API и Swagger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#transport-delay-predictor-backend">Transport Delay Predictor Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#transport-delay-predictor-ml-service">Transport Delay Predictor ML Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#id2">Примеры и ответы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generated/index.html">Справочник Python-кода</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.main.html">backend.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.models.dashboard.html">backend.app.models.dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.models.fleet.html">backend.app.models.fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.models.incident.html">backend.app.models.incident</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.models.schedule.html">backend.app.models.schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.models.telemetry.html">backend.app.models.telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.dashboard_service.html">backend.app.services.dashboard_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.features.feature_service.html">backend.app.services.features.feature_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.features.schedule_features.html">backend.app.services.features.schedule_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.features.spatial_features.html">backend.app.services.features.spatial_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.features.telemetry_features.html">backend.app.services.features.telemetry_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.fleet_service.html">backend.app.services.fleet_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.historical_replay_service.html">backend.app.services.historical_replay_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.incident_service.html">backend.app.services.incident_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.ndtp_emulator_service.html">backend.app.services.ndtp_emulator_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.ndtp_service.html">backend.app.services.ndtp_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.prediction_context_service.html">backend.app.services.prediction_context_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.prediction_service.html">backend.app.services.prediction_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.processing_service.html">backend.app.services.processing_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.schedule_service.html">backend.app.services.schedule_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.stop_arrival_service.html">backend.app.services.stop_arrival_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.telemetry_service.html">backend.app.services.telemetry_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.app.services.vehicle_state_service.html">backend.app.services.vehicle_state_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/backend.scripts.configure_ndtp_demo.html">backend.scripts.configure_ndtp_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/ml_service.app.main.html">ml_service.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/ml_service.app.models.prediction.html">ml_service.app.models.prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/ml_service.app.services.ml_risk.html">ml_service.app.services.ml_risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/ml_service.app.services.model_service.html">ml_service.app.services.model_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/ml_service.research.vovchik.train_from_notebook.html">ml_service.research.vovchik.train_from_notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance.html">Сборка и публикация документации</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html#id2">Повторная сборка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html#id3">Что передать в форме хакатона</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id1">
+<h2>Материалы проекта<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="_downloads/cbb7082a2a84d336776ccb1083f15423/JURY_GUIDE.md"><code class="xref download docutils literal notranslate"><span class="pre">Инструкция</span> <span class="pre">для</span> <span class="pre">жюри</span></code></a>.</p></li>
+<li><p><a class="reference download internal" download="" href="_downloads/31057abdccbafecc377320b06c2a6b0b/PERFORMANCE.md"><code class="xref download docutils literal notranslate"><span class="pre">Измеренная</span> <span class="pre">производительность</span></code></a>.</p></li>
+<li><p><a class="reference download internal" download="" href="_downloads/13c6a5a4e784f41631f54a2c99b5520b/ML_RISK.md"><code class="xref download docutils literal notranslate"><span class="pre">Методика</span> <span class="pre">обучения</span> <span class="pre">и</span> <span class="pre">ограничения</span> <span class="pre">ML</span></code></a>.</p></li>
+<li><p><a class="reference download internal" download="" href="_downloads/c87f95b0477f0f7d4f16b0e49d221f01/Emulator-and-Telematic-Packets-Specification.md"><code class="xref download docutils literal notranslate"><span class="pre">Спецификация</span> <span class="pre">эмулятора</span> <span class="pre">NDTP</span></code></a>.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>Границы документации<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Справочник охватывает Python-модули Backend и ML, вспомогательный скрипт NDTP
+и запуск обучения. Vue-фронтенд описан на уровне архитектуры и обмена данными.
+Ноутбуки, сторонние библиотеки и тесты не включены в справочник функций.
+Сигнатуры и поля извлекаются из исходников автоматически; пояснения к подсистемам
+подготовлены отдельно. Экспорт OpenAPI не запускает TCP-приёмник и не обучает модели.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

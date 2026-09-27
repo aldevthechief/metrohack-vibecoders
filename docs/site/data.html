@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Данные, признаки и ограничения &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=57e88ba2" />
+    <script src="_static/documentation_options.js?v=372fde1a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="HTTP API и Swagger" href="api.html" />
+    <link rel="prev" title="Архитектура и модули" href="architecture.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Данные, признаки и ограничения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Идентификаторы и единицы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Телеметрия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Производные признаки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Отклонение и риск</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Ограничения демонстрации</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/index.html">Справочник Python-кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="architecture.html" title="предыдущая глава">Архитектура и модули</a></li>
+      <li>Next: <a href="api.html" title="следующая глава">HTTP API и Swagger</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>Данные, признаки и ограничения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<section id="id2">
+<h2>Идентификаторы и единицы<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unit_id</span></code> — идентификатор телематического устройства.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tr_id</span></code> — идентификатор рейса, используемый Backend для истории и расписания.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop_id</span></code> / <code class="docutils literal notranslate"><span class="pre">target_stop_id</span></code> — остановка в плане / цель прогноза.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampleId</span></code> — идентификатор прогнозной точки для фронтенда.</p></li>
+<li><p>Скорости — км/ч; отклонения, возраст пакета и горизонт — секунды.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delay_probability</span></code> / <code class="docutils literal notranslate"><span class="pre">delayProbability</span></code> — доля от 0 до 1, не процент.</p></li>
+<li><p>Массив координат на дашборде имеет порядок <code class="docutils literal notranslate"><span class="pre">[долгота,</span> <span class="pre">широта]</span></code>.</p></li>
+<li><p>NDTP Unix timestamp преобразуется в московское время без timezone в объекте
+Python. Для ручных запросов используйте согласованные ISO-времена МСК
+без смещения, например <code class="docutils literal notranslate"><span class="pre">2026-01-06T12:00:00</span></code>. Не смешивайте aware и naive даты.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Телеметрия<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TelemetryPoint</span></code> содержит время события и получения, GPS-время, скорость,
+курс, высоту, координаты, признак валидности и флаг исторического пакета.
+HTTP <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/v1/telemetry</span></code> принимает эту JSON-модель.
+Бинарный NDTP поступает отдельно по TCP; его нельзя отправлять в этот endpoint
+как JSON без предварительного разбора.</p>
+<p>Текущий NDTP-декодер поддерживает незашифрованный handshake 6.2 и навигационную
+ячейку <code class="docutils literal notranslate"><span class="pre">G6CellNav00</span></code> realtime-пакета. Данные дверей, топлива, температуры
+и оборотов двигателя в текущую модель телеметрии не включены.</p>
+</section>
+<section id="id4">
+<h2>Производные признаки<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><p>Скорость: среднее, стандартное отклонение, минимум, максимум, медиана
+в окнах 30 с, 1, 3, 5, 10 и 15 минут.</p></li>
+<li><p>Простой: доля замеров со скоростью ≤ 2 км/ч в окнах 1, 3 и 5 минут,
+длительность текущей и максимальной остановки, число остановок.
+Доля остановки считается по замерам, а не интегралом времени.</p></li>
+<li><p>Динамика: изменение скорости между первым и последним замером окна,
+нормированное на минуты.</p></li>
+<li><p>Качество потока: возраст телеметрии и GPS, задержка доставки,
+количество пакетов за 15 минут и частота в пакетах в минуту.</p></li>
+<li><p>Расписание: календарные признаки, текущее отклонение, горизонт и число
+остановок до цели.</p></li>
+<li><p>Пространство: расстояние до цели и приближение к ней по доступной истории GPS.</p></li>
+</ul>
+<p>Полный порядок колонок задан в переменной <code class="docutils literal notranslate"><span class="pre">FEATURE_COLS</span></code> модуля
+<code class="docutils literal notranslate"><span class="pre">ml_service/app/services/model_service.py</span></code>.
+Недоступные числовые значения не следует заменять нулями без основания.</p>
+</section>
+<section id="id5">
+<h2>Отклонение и риск<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Текущее отклонение можно передать напрямую через <code class="docutils literal notranslate"><span class="pre">/api/v1/current-deviation</span></code>
+либо вычислить из фактического прибытия через <code class="docutils literal notranslate"><span class="pre">/api/v1/arrivals</span></code>.
+<code class="docutils literal notranslate"><span class="pre">StopArrivalService</span></code> также оценивает прибытие по серии медленных GPS-фиксаций
+около плановой остановки; источник обозначается <code class="docutils literal notranslate"><span class="pre">gps-estimate</span></code>.
+Это эвристическая оценка, не сигнал датчика дверей.</p>
+<p>В Backend уровни риска определяются прогнозной задержкой:
+менее 60 с — <code class="docutils literal notranslate"><span class="pre">low</span></code>, от 60 до 120 с включительно — <code class="docutils literal notranslate"><span class="pre">medium</span></code>,
+больше 120 с — <code class="docutils literal notranslate"><span class="pre">high</span></code>. Вероятность ML хранится отдельным полем.
+Сигналы «низкая скорость» и «длительный простой» описывают наблюдения,
+но сами по себе не устанавливают дорожную причину.</p>
+</section>
+<section id="id6">
+<h2>Ограничения демонстрации<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><p>План из набора относится к 6–7 января 2026 года; для текущего NDTP нужен новый план.</p></li>
+<li><p>Прогноз допускается в окне <strong>(10, 15] минут</strong>: ровно 10 минут исключается кодом.</p></li>
+<li><p>Живой GPS без прогноза — предусмотренный режим, а не подтверждение работы ML.</p></li>
+<li><p>Оценки MAE и вероятностей относятся к описанному тестовому набору,
+а не к гарантированному качеству на новых днях.</p></li>
+<li><p>Производительность и границы замера приведены в
+<a class="reference download internal" download="" href="_downloads/31057abdccbafecc377320b06c2a6b0b/PERFORMANCE.md"><code class="xref download docutils literal notranslate"><span class="pre">PERFORMANCE.md</span></code></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

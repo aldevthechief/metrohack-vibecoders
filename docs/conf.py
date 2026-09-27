@@ -1,0 +1,13 @@
+project = 'Metrohack — прогноз задержек транспорта'
+author = 'Команда Metrohack'
+language = 'ru'
+extensions = []
+exclude_patterns = ['_build', 'site', 'README.md']
+html_theme = 'alabaster'
+html_title = project
+html_theme_options = {'description': 'Код, API и руководство по проверке', 'fixed_sidebar': True}
+html_static_path = ['_static']
+html_css_files = ['custom.css']
+html_extra_path = ['openapi', 'swagger']
+html_show_sourcelink = False
+html_show_copyright = False

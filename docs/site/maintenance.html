@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Сборка и публикация документации &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=57e88ba2" />
+    <script src="_static/documentation_options.js?v=372fde1a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="ml_service.research.vovchik.train_from_notebook" href="generated/ml_service.research.vovchik.train_from_notebook.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/index.html">Справочник Python-кода</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Сборка и публикация документации</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Повторная сборка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Что передать в форме хакатона</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="generated/ml_service.research.vovchik.train_from_notebook.html" title="предыдущая глава">ml_service.research.vovchik.train_from_notebook</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>Сборка и публикация документации<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<section id="id2">
+<h2>Повторная сборка<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Готовый сайт хранится в <code class="docutils literal notranslate"><span class="pre">docs/site</span></code>. Для регенерации нужен Python 3.12+
+и зависимости приложений: экспорт импортирует настоящие FastAPI-приложения,
+а ML при импорте загружает свои артефакты. Обучение и lifespan не запускаются.</p>
+<p>Из корня репозитория, в отдельном Python-окружении:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt<span class="w"> </span>-r<span class="w"> </span>backend/requirements.txt<span class="w"> </span>-r<span class="w"> </span>ml_service/requirements.txt
+python<span class="w"> </span>docs/build.py
+</pre></div>
+</div>
+<p>Сборка заново извлекает сигнатуры и поля из Python AST, экспортирует OpenAPI
+Backend и ML в отдельных процессах (оба используют пакет с именем <code class="docutils literal notranslate"><span class="pre">app</span></code>),
+проверяет Swagger и <code class="docutils literal notranslate"><span class="pre">/health</span></code> через ASGI без открытия сетевых портов,
+затем запускает Sphinx с ошибкой при любом предупреждении.
+Справочник генерируется из кода без запуска функций; это Sphinx-документация,
+не вручную переписанный перечень сигнатур.</p>
+<p><code class="docutils literal notranslate"><span class="pre">docs/generated</span></code> и <code class="docutils literal notranslate"><span class="pre">docs/openapi</span></code> обновляются сборкой.
+Их, а также <code class="docutils literal notranslate"><span class="pre">docs/site</span></code>, следует коммитить вместе с изменениями контрактов.
+Пояснения к модулям находятся в <code class="docutils literal notranslate"><span class="pre">docs/module_descriptions.json</span></code>.
+Редактируйте исходные <code class="docutils literal notranslate"><span class="pre">.rst</span></code> и описания, а не готовые HTML-файлы.</p>
+</section>
+<section id="id3">
+<h2>Что передать в форме хакатона<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Можно передать ссылку на <code class="docutils literal notranslate"><span class="pre">docs/README.md</span></code> в опубликованной ветке репозитория:
+там есть инструкция открытия готового сайта и ссылки на обе OpenAPI-схемы.
+Доступ к репозиторию должен быть предоставлен жюри.</p>
+<p>Для удобного просмотра без скачивания опубликуйте папку <code class="docutils literal notranslate"><span class="pre">docs</span></code> на статическом
+хостинге. Например, в GitHub Pages выберите ветку с этой документацией
+и каталог <code class="docutils literal notranslate"><span class="pre">/docs</span></code>; <code class="docutils literal notranslate"><span class="pre">docs/index.html</span></code> перенаправляет на <code class="docutils literal notranslate"><span class="pre">site/index.html</span></code>.
+Файл <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> сохраняет служебные каталоги Sphinx.
+Доступность Pages зависит от настроек и тарифа репозитория.
+После публикации проверьте фактический адрес в браузере и передайте его жюри.
+Само наличие HTML в репозитории ещё не означает, что сайт опубликован.
+Порядок настройки: <a class="reference external" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">официальная инструкция GitHub Pages</a>.</p>
+<p>Статический Swagger предназначен для чтения схем: выполнение запросов отключено.
+Для запросов используйте Swagger запущенных сервисов. Публикация сайта документации
+не публикует Backend или ML и не делает <code class="docutils literal notranslate"><span class="pre">localhost</span></code> удалённо доступным.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

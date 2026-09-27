@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>backend.app.main &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=57e88ba2" />
+    <script src="../_static/documentation_options.js?v=372fde1a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="backend.app.models.dashboard" href="backend.app.models.dashboard.html" />
+    <link rel="prev" title="Справочник Python-кода" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Справочник Python-кода</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">backend.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.dashboard.html">backend.app.models.dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.fleet.html">backend.app.models.fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.incident.html">backend.app.models.incident</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.schedule.html">backend.app.models.schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.telemetry.html">backend.app.models.telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.dashboard_service.html">backend.app.services.dashboard_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.feature_service.html">backend.app.services.features.feature_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.schedule_features.html">backend.app.services.features.schedule_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.spatial_features.html">backend.app.services.features.spatial_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.telemetry_features.html">backend.app.services.features.telemetry_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.fleet_service.html">backend.app.services.fleet_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.historical_replay_service.html">backend.app.services.historical_replay_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.incident_service.html">backend.app.services.incident_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_emulator_service.html">backend.app.services.ndtp_emulator_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_service.html">backend.app.services.ndtp_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_context_service.html">backend.app.services.prediction_context_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_service.html">backend.app.services.prediction_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.processing_service.html">backend.app.services.processing_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.schedule_service.html">backend.app.services.schedule_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.stop_arrival_service.html">backend.app.services.stop_arrival_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.telemetry_service.html">backend.app.services.telemetry_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.vehicle_state_service.html">backend.app.services.vehicle_state_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.scripts.configure_ndtp_demo.html">backend.scripts.configure_ndtp_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.main.html">ml_service.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.models.prediction.html">ml_service.app.models.prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.ml_risk.html">ml_service.app.services.ml_risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.model_service.html">ml_service.app.services.model_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.research.vovchik.train_from_notebook.html">ml_service.research.vovchik.train_from_notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Справочник Python-кода</a><ul>
+      <li>Previous: <a href="index.html" title="предыдущая глава">Справочник Python-кода</a></li>
+      <li>Next: <a href="backend.app.models.dashboard.html" title="следующая глава">backend.app.models.dashboard</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="backend-app-main">
+<h1>backend.app.main<a class="headerlink" href="#backend-app-main" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Точка сборки Backend: создаёт сервисы, регистрирует HTTP-маршруты и управляет жизненным циклом NDTP. Контракты маршрутов доступны в разделе API.</p>
+<p><a class="reference download internal" download="" href="../_downloads/b9c18538e3de927642af2c3be809e892/main.py"><code class="xref download docutils literal notranslate"><span class="pre">Скачать</span> <span class="pre">исходный</span> <span class="pre">код</span></code></a></p>
+<section id="lifespan">
+<h2>lifespan<a class="headerlink" href="#lifespan" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lifespan</span><span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="n">FastAPI</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="root">
+<h2>root<a class="headerlink" href="#root" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">RedirectResponse</span>
+</pre></div>
+</div>
+</section>
+<section id="health">
+<h2>health<a class="headerlink" href="#health" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">health</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="add-telemetry">
+<h2>add_telemetry<a class="headerlink" href="#add-telemetry" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">add_telemetry</span><span class="p">(</span><span class="n">telemetry</span><span class="p">:</span> <span class="n">TelemetryPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="register-ndtp-unit">
+<h2>register_ndtp_unit<a class="headerlink" href="#register-ndtp-unit" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">register_ndtp_unit</span><span class="p">(</span><span class="n">mapping</span><span class="p">:</span> <span class="n">NdtpUnitMapping</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="get-ndtp-status">
+<h2>get_ndtp_status<a class="headerlink" href="#get-ndtp-status" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_ndtp_status</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="start-historical-replay">
+<h2>start_historical_replay<a class="headerlink" href="#start-historical-replay" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">start_historical_replay</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="get-historical-replay">
+<h2>get_historical_replay<a class="headerlink" href="#get-historical-replay" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_historical_replay</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="get-vehicles">
+<h2>get_vehicles<a class="headerlink" href="#get-vehicles" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_vehicles</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="get-fleet">
+<h2>get_fleet<a class="headerlink" href="#get-fleet" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_fleet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">FleetResponse</span>
+</pre></div>
+</div>
+</section>
+<section id="get-latest-telemetry">
+<h2>get_latest_telemetry<a class="headerlink" href="#get-latest-telemetry" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_latest_telemetry</span><span class="p">(</span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TelemetryPoint</span>
+</pre></div>
+</div>
+</section>
+<section id="get-vehicle-history">
+<h2>get_vehicle_history<a class="headerlink" href="#get-vehicle-history" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_vehicle_history</span><span class="p">(</span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="add-schedule-point">
+<h2>add_schedule_point<a class="headerlink" href="#add-schedule-point" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">add_schedule_point</span><span class="p">(</span><span class="n">point</span><span class="p">:</span> <span class="n">SchedulePoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="get-schedule">
+<h2>get_schedule<a class="headerlink" href="#get-schedule" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_schedule</span><span class="p">(</span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">SchedulePoint</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="set-current-deviation">
+<h2>set_current_deviation<a class="headerlink" href="#set-current-deviation" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">set_current_deviation</span><span class="p">(</span><span class="n">deviation</span><span class="p">:</span> <span class="n">CurrentDeviation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="record-arrival">
+<h2>record_arrival<a class="headerlink" href="#record-arrival" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">record_arrival</span><span class="p">(</span><span class="n">arrival</span><span class="p">:</span> <span class="n">ObservedArrival</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="set-prediction-context">
+<h2>set_prediction_context<a class="headerlink" href="#set-prediction-context" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">set_prediction_context</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">PredictionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="get-telemetry-features">
+<h2>get_telemetry_features<a class="headerlink" href="#get-telemetry-features" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_telemetry_features</span><span class="p">(</span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">at</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="get-schedule-features">
+<h2>get_schedule_features<a class="headerlink" href="#get-schedule-features" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_schedule_features</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">PredictionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="get-spatial-features">
+<h2>get_spatial_features<a class="headerlink" href="#get-spatial-features" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_spatial_features</span><span class="p">(</span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">at</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target_longitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">target_latitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="get-features">
+<h2>get_features<a class="headerlink" href="#get-features" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_features</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">PredictionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="predict">
+<h2>predict<a class="headerlink" href="#predict" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">PredictionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="evaluate-incident">
+<h2>evaluate_incident<a class="headerlink" href="#evaluate-incident" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_incident</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">PredictionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Incident</span>
+</pre></div>
+</div>
+</section>
+<section id="get-incidents">
+<h2>get_incidents<a class="headerlink" href="#get-incidents" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_incidents</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Incident</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="get-vehicle-incident">
+<h2>get_vehicle_incident<a class="headerlink" href="#get-vehicle-incident" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_vehicle_incident</span><span class="p">(</span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Incident</span>
+</pre></div>
+</div>
+</section>
+<section id="get-dashboard">
+<h2>get_dashboard<a class="headerlink" href="#get-dashboard" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_dashboard</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">DashboardResponse</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

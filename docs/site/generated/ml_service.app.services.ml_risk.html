@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ml_service.app.services.ml_risk &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=57e88ba2" />
+    <script src="../_static/documentation_options.js?v=372fde1a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="ml_service.app.services.model_service" href="ml_service.app.services.model_service.html" />
+    <link rel="prev" title="ml_service.app.models.prediction" href="ml_service.app.models.prediction.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Справочник Python-кода</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backend.app.main.html">backend.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.dashboard.html">backend.app.models.dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.fleet.html">backend.app.models.fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.incident.html">backend.app.models.incident</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.schedule.html">backend.app.models.schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.telemetry.html">backend.app.models.telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.dashboard_service.html">backend.app.services.dashboard_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.feature_service.html">backend.app.services.features.feature_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.schedule_features.html">backend.app.services.features.schedule_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.spatial_features.html">backend.app.services.features.spatial_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.telemetry_features.html">backend.app.services.features.telemetry_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.fleet_service.html">backend.app.services.fleet_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.historical_replay_service.html">backend.app.services.historical_replay_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.incident_service.html">backend.app.services.incident_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_emulator_service.html">backend.app.services.ndtp_emulator_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_service.html">backend.app.services.ndtp_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_context_service.html">backend.app.services.prediction_context_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_service.html">backend.app.services.prediction_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.processing_service.html">backend.app.services.processing_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.schedule_service.html">backend.app.services.schedule_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.stop_arrival_service.html">backend.app.services.stop_arrival_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.telemetry_service.html">backend.app.services.telemetry_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.vehicle_state_service.html">backend.app.services.vehicle_state_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.scripts.configure_ndtp_demo.html">backend.scripts.configure_ndtp_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.main.html">ml_service.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.models.prediction.html">ml_service.app.models.prediction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ml_service.app.services.ml_risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.model_service.html">ml_service.app.services.model_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.research.vovchik.train_from_notebook.html">ml_service.research.vovchik.train_from_notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Справочник Python-кода</a><ul>
+      <li>Previous: <a href="ml_service.app.models.prediction.html" title="предыдущая глава">ml_service.app.models.prediction</a></li>
+      <li>Next: <a href="ml_service.app.services.model_service.html" title="следующая глава">ml_service.app.services.model_service</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ml-service-app-services-ml-risk">
+<h1>ml_service.app.services.ml_risk<a class="headerlink" href="#ml-service-app-services-ml-risk" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Обучение классификатора риска, временное разбиение с исключением пересекающих границу ответов, оценка вероятностей, SHAP-объяснения регрессора, загрузка совместимых моделей и проверка конкурсного CSV. run_pipeline относится к исследовательской цепочке, не к каждому HTTP-запросу.</p>
+<p><a class="reference download internal" download="" href="../_downloads/f060ee60693a88a38c918a74c98bc481/ml_risk.py"><code class="xref download docutils literal notranslate"><span class="pre">Скачать</span> <span class="pre">исходный</span> <span class="pre">код</span></code></a></p>
+<section id="model-input">
+<h2>model_input<a class="headerlink" href="#model-input" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">model_input</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Select the persisted order; never use incidental DataFrame column order.
+</pre></div>
+</div>
+</section>
+<section id="risk-target">
+<h2>risk_target<a class="headerlink" href="#risk-target" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">risk_target</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="temporal-split">
+<h2>temporal_split<a class="headerlink" href="#temporal-split" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">temporal_split</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>60/20/20 by unique train timestamps; purge labels crossing either boundary.
+</pre></div>
+</div>
+</section>
+<section id="probability-metrics">
+<h2>probability_metrics<a class="headerlink" href="#probability-metrics" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">probability_metrics</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">probability</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="train-risk">
+<h2>train_risk<a class="headerlink" href="#train-risk" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_risk</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="predict-risk">
+<h2>predict_risk<a class="headerlink" href="#predict-risk" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">predict_risk</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="scalar">
+<h2>scalar<a class="headerlink" href="#scalar" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">scalar</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="explain-predictions">
+<h2>explain_predictions<a class="headerlink" href="#explain-predictions" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">explain_predictions</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Explain the correction; add cur_dev_s explicitly to recover absolute delay.
+</pre></div>
+</div>
+</section>
+<section id="predict-for-frontend">
+<h2>predict_for_frontend<a class="headerlink" href="#predict-for-frontend" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">predict_for_frontend</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="model-fingerprint">
+<h2>model_fingerprint<a class="headerlink" href="#model-fingerprint" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">model_fingerprint</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Hash prediction structure, ignoring CatBoost build/time/GUID metadata.
+</pre></div>
+</div>
+</section>
+<section id="load-models">
+<h2>load_models<a class="headerlink" href="#load-models" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_models</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">regressor_path</span><span class="o">=</span><span class="s1">'final_model.cbm'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="validate-submission">
+<h2>validate_submission<a class="headerlink" href="#validate-submission" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_submission</span><span class="p">(</span><span class="n">submission</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="write-json">
+<h2>write_json<a class="headerlink" href="#write-json" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">write_json</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-pipeline">
+<h2>run_pipeline<a class="headerlink" href="#run-pipeline" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">F_train</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">F_test</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">F_validate</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s1">'ml_artifacts'</span><span class="p">,</span> <span class="n">regressor_path</span><span class="o">=</span><span class="s1">'final_model.cbm'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Train only risk; preserve the supplied regressor and existing root submission.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
