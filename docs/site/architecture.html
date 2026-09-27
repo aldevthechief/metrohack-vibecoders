@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Архитектура и модули &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=57e88ba2" />
+    <script src="_static/documentation_options.js?v=372fde1a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Данные, признаки и ограничения" href="data.html" />
+    <link rel="prev" title="Запуск и проверка" href="guide.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Архитектура и модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Путь данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backend">Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Исторический режим</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ml">ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#frontend">Frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/index.html">Справочник Python-кода</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="guide.html" title="предыдущая глава">Запуск и проверка</a></li>
+      <li>Next: <a href="data.html" title="следующая глава">Данные, признаки и ограничения</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>Архитектура и модули<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<section id="id2">
+<h2>Путь данных<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>NDTP TCP :9201 ──&gt; Backend ──HTTP──&gt; ML :8001
+                    │                │
+                    │&lt;── прогноз ────┘
+                    │
+                    └── REST API ──&gt; Vue-дашборд :8080
+</pre></div>
+</div>
+</section>
+<section id="backend">
+<h2>Backend<a class="headerlink" href="#backend" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">backend/app/main.py</span></code> связывает сервисы и объявляет HTTP API.
+При старте загружаются план и настройки устройств, запускается NDTP TCP-приёмник;
+при наличии адреса эмулятора отдельная задача поддерживает его конфигурацию.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NdtpServer</span></code> проверяет заголовок и CRC бинарного кадра, handshake NDTP 6.2,
+разбирает навигационную ячейку и определяет <code class="docutils literal notranslate"><span class="pre">tr_id</span></code> по <code class="docutils literal notranslate"><span class="pre">unit_id</span></code>.
+Ручное сопоставление имеет приоритет; сопоставление из traffic учитывает дату.
+При неоднозначности рейс не угадывается.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ProcessingService</span></code> сохраняет телеметрию, проверяет прибытие на остановку,
+выбирает следующую плановую цель и получает текущее отклонение.
+При отсутствии цели или отклонения пакет остаётся доступен для отображения,
+но новый прогноз не создаётся.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FeatureService</span></code> объединяет календарные, пространственные и телематические
+признаки. Проверяет совпадение времени цели с зарегистрированным расписанием,
+наличие координат и горизонт <code class="docutils literal notranslate"><span class="pre">600</span> <span class="pre">&lt;</span> <span class="pre">horizon_s</span> <span class="pre">&lt;=</span> <span class="pre">900</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PredictionService</span></code> отправляет признаки в ML с тайм-аутом 5 секунд.
+<code class="docutils literal notranslate"><span class="pre">IncidentService</span></code> формирует риск и наблюдаемый сигнал;
+<code class="docutils literal notranslate"><span class="pre">DashboardService</span></code> готовит записи для интерфейса.
+<code class="docutils literal notranslate"><span class="pre">FleetService</span></code> независимо показывает ТС с полученной телеметрией,
+включая те, для которых прогноз ещё недоступен.</p>
+<p><code class="docutils literal notranslate"><span class="pre">VehicleStateService</span></code> хранит историю в памяти, по умолчанию за 15 минут.
+При выборке на момент T учитываются только пакеты, у которых одновременно
+<code class="docutils literal notranslate"><span class="pre">event_time</span> <span class="pre">&lt;=</span> <span class="pre">T</span></code> и <code class="docutils literal notranslate"><span class="pre">receive_time</span> <span class="pre">&lt;=</span> <span class="pre">T</span></code>.
+История и накопленные инциденты не являются постоянной базой данных:
+перезапуск процесса сбрасывает состояние в памяти.</p>
+</section>
+<section id="id3">
+<h2>Исторический режим<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">HistoricalReplayService</span></code> читает points и traffic, использует общий план
+остановок, но отдельную историю ТС. Он собирает признаки и вызывает реальный
+ML-сервис для каждой точки. Эталонные ответы validate и сохранённые прогнозы
+для вычисления не читаются. Исторические пакеты не подменяют живой NDTP-парк.</p>
+</section>
+<section id="ml">
+<h2>ML<a class="headerlink" href="#ml" title="Ссылка на этот заголовок">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ml_service/app/main.py</span></code> предоставляет <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/predict</span></code>.
+<code class="docutils literal notranslate"><span class="pre">ModelService</span></code> при импорте приложения загружает артефакты из <code class="docutils literal notranslate"><span class="pre">app/artifacts</span></code>.
+Входной словарь приводится к фиксированному порядку 78 признаков.
+Регрессор CatBoost предсказывает поправку к текущему отклонению;
+результат возвращается в секундах задержки.</p>
+<p>Отдельный классификатор оценивает вероятность события «задержка &gt; 120 секунд».
+<code class="docutils literal notranslate"><span class="pre">ml_risk.py</span></code> содержит расчёт риска, калибровку, SHAP-вклады и проверки артефактов.
+SHAP объясняет вклад признаков в регрессию, а не доказывает причину задержки.
+Методика обучения и ограничения оценки находятся в
+<a class="reference download internal" download="" href="_downloads/13c6a5a4e784f41631f54a2c99b5520b/ML_RISK.md"><code class="xref download docutils literal notranslate"><span class="pre">ML_RISK.md</span></code></a>.</p>
+</section>
+<section id="frontend">
+<h2>Frontend<a class="headerlink" href="#frontend" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Vue 3 и Vite; в Docker статические файлы обслуживает Nginx.
+<code class="docutils literal notranslate"><span class="pre">frontend/src/services/dataSource.js</span></code> получает данные по REST API,
+<code class="docutils literal notranslate"><span class="pre">App.vue</span></code> управляет экранами, <code class="docutils literal notranslate"><span class="pre">TransportMap.vue</span></code> отображает карту Leaflet.
+Nginx проксирует <code class="docutils literal notranslate"><span class="pre">/api/*</span></code> в Backend. Swagger на <code class="docutils literal notranslate"><span class="pre">/docs</span></code> открывается
+непосредственно на порту сервиса, а не по адресу дашборда.</p>
+<p>Линия маршрута соединяет плановые остановки и не является полноценным
+map matching. При потере HTTP-соединения фронтенд сохраняет последний срез
+и показывает ошибку связи.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

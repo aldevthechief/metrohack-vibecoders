@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>backend.app.services.features.telemetry_features &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=57e88ba2" />
+    <script src="../_static/documentation_options.js?v=372fde1a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="backend.app.services.fleet_service" href="backend.app.services.fleet_service.html" />
+    <link rel="prev" title="backend.app.services.features.spatial_features" href="backend.app.services.features.spatial_features.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Справочник Python-кода</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backend.app.main.html">backend.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.dashboard.html">backend.app.models.dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.fleet.html">backend.app.models.fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.incident.html">backend.app.models.incident</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.schedule.html">backend.app.models.schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.telemetry.html">backend.app.models.telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.dashboard_service.html">backend.app.services.dashboard_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.feature_service.html">backend.app.services.features.feature_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.schedule_features.html">backend.app.services.features.schedule_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.spatial_features.html">backend.app.services.features.spatial_features</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">backend.app.services.features.telemetry_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.fleet_service.html">backend.app.services.fleet_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.historical_replay_service.html">backend.app.services.historical_replay_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.incident_service.html">backend.app.services.incident_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_emulator_service.html">backend.app.services.ndtp_emulator_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_service.html">backend.app.services.ndtp_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_context_service.html">backend.app.services.prediction_context_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_service.html">backend.app.services.prediction_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.processing_service.html">backend.app.services.processing_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.schedule_service.html">backend.app.services.schedule_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.stop_arrival_service.html">backend.app.services.stop_arrival_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.telemetry_service.html">backend.app.services.telemetry_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.vehicle_state_service.html">backend.app.services.vehicle_state_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.scripts.configure_ndtp_demo.html">backend.scripts.configure_ndtp_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.main.html">ml_service.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.models.prediction.html">ml_service.app.models.prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.ml_risk.html">ml_service.app.services.ml_risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.model_service.html">ml_service.app.services.model_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.research.vovchik.train_from_notebook.html">ml_service.research.vovchik.train_from_notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Справочник Python-кода</a><ul>
+      <li>Previous: <a href="backend.app.services.features.spatial_features.html" title="предыдущая глава">backend.app.services.features.spatial_features</a></li>
+      <li>Next: <a href="backend.app.services.fleet_service.html" title="следующая глава">backend.app.services.fleet_service</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="backend-app-services-features-telemetry-features">
+<h1>backend.app.services.features.telemetry_features<a class="headerlink" href="#backend-app-services-features-telemetry-features" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Статистика скорости на окнах 30 с — 15 минут, простой при скорости ≤ 2 км/ч, динамика скорости и качество доставки пакетов. build принимает рейс и момент расчёта, возвращает словарь признаков без использования будущих пакетов.</p>
+<p><a class="reference download internal" download="" href="../_downloads/4805a0548494895b116941aa65cf58c1/telemetry_features.py"><code class="xref download docutils literal notranslate"><span class="pre">Скачать</span> <span class="pre">исходный</span> <span class="pre">код</span></code></a></p>
+<section id="telemetryfeatureservice">
+<h2>TelemetryFeatureService<a class="headerlink" href="#telemetryfeatureservice" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TelemetryFeatureService</span>
+</pre></div>
+</div>
+<p>Поля и константы класса:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">STOP_SPEED_KMH</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">WINDOWS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'30s'</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">'1m'</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="s1">'3m'</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span> <span class="s1">'5m'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">'10m'</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span> <span class="s1">'15m'</span><span class="p">:</span> <span class="mi">900</span><span class="p">}</span>
+</pre></div>
+</div>
+<section id="telemetryfeatureservice-init">
+<h3>TelemetryFeatureService.__init__<a class="headerlink" href="#telemetryfeatureservice-init" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vehicle_state_service</span><span class="p">:</span> <span class="n">VehicleStateService</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-build">
+<h3>TelemetryFeatureService.build<a class="headerlink" href="#telemetryfeatureservice-build" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-add-speed-statistics">
+<h3>TelemetryFeatureService._add_speed_statistics<a class="headerlink" href="#telemetryfeatureservice-add-speed-statistics" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_add_speed_statistics</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span> <span class="n">speeds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-max-packet-gap">
+<h3>TelemetryFeatureService._max_packet_gap<a class="headerlink" href="#telemetryfeatureservice-max-packet-gap" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_max_packet_gap</span><span class="p">(</span><span class="n">history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-speed-slope">
+<h3>TelemetryFeatureService._speed_slope<a class="headerlink" href="#telemetryfeatureservice-speed-slope" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_speed_slope</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-longest-stop">
+<h3>TelemetryFeatureService._longest_stop<a class="headerlink" href="#telemetryfeatureservice-longest-stop" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_longest_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-stop-count">
+<h3>TelemetryFeatureService._stop_count<a class="headerlink" href="#telemetryfeatureservice-stop-count" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_stop_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-time-since-last-move">
+<h3>TelemetryFeatureService._time_since_last_move<a class="headerlink" href="#telemetryfeatureservice-time-since-last-move" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_time_since_last_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">],</span> <span class="n">at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="telemetryfeatureservice-current-stop-duration">
+<h3>TelemetryFeatureService._current_stop_duration<a class="headerlink" href="#telemetryfeatureservice-current-stop-duration" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_current_stop_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">TelemetryPoint</span><span class="p">],</span> <span class="n">at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,1760 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Transport Delay Predictor Backend",
+    "description": "Backend API for transport delay prediction",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Health Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/telemetry": {
+      "post": {
+        "summary": "Add Telemetry",
+        "operationId": "add_telemetry_api_v1_telemetry_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TelemetryPoint"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Add Telemetry Api V1 Telemetry Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ndtp/units": {
+      "post": {
+        "summary": "Register Ndtp Unit",
+        "operationId": "register_ndtp_unit_api_v1_ndtp_units_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NdtpUnitMapping"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Register Ndtp Unit Api V1 Ndtp Units Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ndtp/status": {
+      "get": {
+        "summary": "Get Ndtp Status",
+        "operationId": "get_ndtp_status_api_v1_ndtp_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Ndtp Status Api V1 Ndtp Status Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/replay/start": {
+      "post": {
+        "summary": "Start Historical Replay",
+        "operationId": "start_historical_replay_api_v1_replay_start_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Start Historical Replay Api V1 Replay Start Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/replay": {
+      "get": {
+        "summary": "Get Historical Replay",
+        "operationId": "get_historical_replay_api_v1_replay_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Historical Replay Api V1 Replay Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vehicles": {
+      "get": {
+        "summary": "Get Vehicles",
+        "operationId": "get_vehicles_api_v1_vehicles_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Response Get Vehicles Api V1 Vehicles Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fleet": {
+      "get": {
+        "summary": "Get Fleet",
+        "operationId": "get_fleet_api_v1_fleet_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FleetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vehicles/{tr_id}/latest": {
+      "get": {
+        "summary": "Get Latest Telemetry",
+        "operationId": "get_latest_telemetry_api_v1_vehicles__tr_id__latest_get",
+        "parameters": [
+          {
+            "name": "tr_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tr Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryPoint"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vehicles/{tr_id}/history": {
+      "get": {
+        "summary": "Get Vehicle History",
+        "operationId": "get_vehicle_history_api_v1_vehicles__tr_id__history_get",
+        "parameters": [
+          {
+            "name": "tr_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tr Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TelemetryPoint"
+                  },
+                  "title": "Response Get Vehicle History Api V1 Vehicles  Tr Id  History Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule": {
+      "post": {
+        "summary": "Add Schedule Point",
+        "operationId": "add_schedule_point_api_v1_schedule_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchedulePoint"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Add Schedule Point Api V1 Schedule Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{tr_id}": {
+      "get": {
+        "summary": "Get Schedule",
+        "operationId": "get_schedule_api_v1_schedule__tr_id__get",
+        "parameters": [
+          {
+            "name": "tr_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tr Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SchedulePoint"
+                  },
+                  "title": "Response Get Schedule Api V1 Schedule  Tr Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/current-deviation": {
+      "post": {
+        "summary": "Set Current Deviation",
+        "operationId": "set_current_deviation_api_v1_current_deviation_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CurrentDeviation"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Set Current Deviation Api V1 Current Deviation Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/arrivals": {
+      "post": {
+        "summary": "Record Arrival",
+        "operationId": "record_arrival_api_v1_arrivals_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObservedArrival"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "type": "object",
+                  "title": "Response Record Arrival Api V1 Arrivals Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/prediction-context": {
+      "post": {
+        "summary": "Set Prediction Context",
+        "operationId": "set_prediction_context_api_v1_prediction_context_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionContext"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Set Prediction Context Api V1 Prediction Context Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vehicles/{tr_id}/features": {
+      "get": {
+        "summary": "Get Telemetry Features",
+        "operationId": "get_telemetry_features_api_v1_vehicles__tr_id__features_get",
+        "parameters": [
+          {
+            "name": "tr_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tr Id"
+            }
+          },
+          {
+            "name": "at",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "At"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Telemetry Features Api V1 Vehicles  Tr Id  Features Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/features/schedule": {
+      "post": {
+        "summary": "Get Schedule Features",
+        "operationId": "get_schedule_features_api_v1_features_schedule_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionContext"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Schedule Features Api V1 Features Schedule Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vehicles/{tr_id}/spatial-features": {
+      "get": {
+        "summary": "Get Spatial Features",
+        "operationId": "get_spatial_features_api_v1_vehicles__tr_id__spatial_features_get",
+        "parameters": [
+          {
+            "name": "tr_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tr Id"
+            }
+          },
+          {
+            "name": "at",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "At"
+            }
+          },
+          {
+            "name": "target_longitude",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Target Longitude"
+            }
+          },
+          {
+            "name": "target_latitude",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Target Latitude"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Get Spatial Features Api V1 Vehicles  Tr Id  Spatial Features Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/features": {
+      "post": {
+        "summary": "Get Features",
+        "operationId": "get_features_api_v1_features_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionContext"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Get Features Api V1 Features Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/predict": {
+      "post": {
+        "summary": "Predict",
+        "operationId": "predict_api_v1_predict_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionContext"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Predict Api V1 Predict Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incidents/evaluate": {
+      "post": {
+        "summary": "Evaluate Incident",
+        "operationId": "evaluate_incident_api_v1_incidents_evaluate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionContext"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Incident"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incidents": {
+      "get": {
+        "summary": "Get Incidents",
+        "operationId": "get_incidents_api_v1_incidents_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  },
+                  "type": "array",
+                  "title": "Response Get Incidents Api V1 Incidents Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incidents/{tr_id}": {
+      "get": {
+        "summary": "Get Vehicle Incident",
+        "operationId": "get_vehicle_incident_api_v1_incidents__tr_id__get",
+        "parameters": [
+          {
+            "name": "tr_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Tr Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Incident"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard": {
+      "get": {
+        "summary": "Get Dashboard",
+        "operationId": "get_dashboard_api_dashboard_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CurrentDeviation": {
+        "properties": {
+          "tr_id": {
+            "type": "string",
+            "title": "Tr Id"
+          },
+          "cur_dev_s": {
+            "type": "number",
+            "title": "Cur Dev S"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tr_id",
+          "cur_dev_s"
+        ],
+        "title": "CurrentDeviation"
+      },
+      "DashboardRecord": {
+        "properties": {
+          "sampleId": {
+            "type": "string",
+            "title": "Sampleid"
+          },
+          "vehicleId": {
+            "type": "string",
+            "title": "Vehicleid"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "targetTime": {
+            "type": "string",
+            "title": "Targettime"
+          },
+          "targetStopId": {
+            "type": "string",
+            "title": "Targetstopid"
+          },
+          "targetAddress": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Targetaddress"
+          },
+          "segmentLabel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Segmentlabel"
+          },
+          "targetCoordinate": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Targetcoordinate"
+          },
+          "position": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position"
+          },
+          "telemetryTime": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telemetrytime"
+          },
+          "telemetryAgeSec": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telemetryagesec"
+          },
+          "speedKmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speedkmh"
+          },
+          "meanSpeedKmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meanspeedkmh"
+          },
+          "stopFraction": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stopfraction"
+          },
+          "currentDeviationSec": {
+            "type": "number",
+            "title": "Currentdeviationsec"
+          },
+          "currentDeviationSource": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currentdeviationsource"
+          },
+          "predictionSec": {
+            "type": "number",
+            "title": "Predictionsec"
+          },
+          "delayProbability": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delayprobability"
+          },
+          "estimatedArrival": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimatedarrival"
+          },
+          "reasonFactors": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Reasonfactors"
+          },
+          "horizonSec": {
+            "type": "number",
+            "title": "Horizonsec"
+          },
+          "signal": {
+            "type": "string",
+            "title": "Signal"
+          },
+          "riskLevel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Risklevel"
+          },
+          "route": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Route"
+          },
+          "trail": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Trail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sampleId",
+          "vehicleId",
+          "timestamp",
+          "targetTime",
+          "targetStopId",
+          "currentDeviationSec",
+          "predictionSec",
+          "horizonSec",
+          "signal",
+          "route",
+          "trail"
+        ],
+        "title": "DashboardRecord"
+      },
+      "DashboardResponse": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardRecord"
+            },
+            "type": "array",
+            "title": "Records"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "date",
+          "records"
+        ],
+        "title": "DashboardResponse"
+      },
+      "FleetResponse": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "default": "live-telemetry"
+          },
+          "generatedAt": {
+            "type": "string",
+            "title": "Generatedat"
+          },
+          "vehicles": {
+            "items": {
+              "$ref": "#/components/schemas/FleetVehicle"
+            },
+            "type": "array",
+            "title": "Vehicles"
+          }
+        },
+        "type": "object",
+        "required": [
+          "generatedAt",
+          "vehicles"
+        ],
+        "title": "FleetResponse"
+      },
+      "FleetVehicle": {
+        "properties": {
+          "vehicleId": {
+            "type": "string",
+            "title": "Vehicleid"
+          },
+          "unitId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unitid"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source",
+            "default": "ndtp"
+          },
+          "position": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position"
+          },
+          "trail": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Trail"
+          },
+          "telemetryTime": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telemetrytime"
+          },
+          "gpsReceivedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gpsreceivedat"
+          },
+          "lastReceivedAt": {
+            "type": "string",
+            "title": "Lastreceivedat"
+          },
+          "telemetryAgeSec": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Telemetryagesec"
+          },
+          "speedKmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speedkmh"
+          },
+          "headingDeg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Headingdeg"
+          },
+          "packetCount15m": {
+            "type": "integer",
+            "title": "Packetcount15M",
+            "default": 0
+          },
+          "meanSpeed5mKmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Meanspeed5Mkmh"
+          },
+          "stoppedFraction5m": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stoppedfraction5M"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "predictionStatus": {
+            "type": "string",
+            "title": "Predictionstatus"
+          }
+        },
+        "type": "object",
+        "required": [
+          "vehicleId",
+          "lastReceivedAt",
+          "status",
+          "predictionStatus"
+        ],
+        "title": "FleetVehicle"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Incident": {
+        "properties": {
+          "tr_id": {
+            "type": "string",
+            "title": "Tr Id"
+          },
+          "target_stop_id": {
+            "type": "string",
+            "title": "Target Stop Id"
+          },
+          "current_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Current Time"
+          },
+          "current_deviation_s": {
+            "type": "number",
+            "title": "Current Deviation S"
+          },
+          "current_deviation_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Deviation Source"
+          },
+          "predicted_delay_s": {
+            "type": "number",
+            "title": "Predicted Delay S"
+          },
+          "delay_probability": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delay Probability"
+          },
+          "reason_factors": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Reason Factors"
+          },
+          "risk_level": {
+            "$ref": "#/components/schemas/RiskLevel"
+          },
+          "signal": {
+            "type": "string",
+            "title": "Signal"
+          },
+          "speed_kmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed Kmh"
+          },
+          "mean_speed_kmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Speed Kmh"
+          },
+          "stop_fraction": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Fraction"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tr_id",
+          "target_stop_id",
+          "current_time",
+          "current_deviation_s",
+          "predicted_delay_s",
+          "risk_level",
+          "signal"
+        ],
+        "title": "Incident"
+      },
+      "NdtpUnitMapping": {
+        "properties": {
+          "unit_id": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "minimum": 0.0,
+            "title": "Unit Id"
+          },
+          "tr_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Tr Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "unit_id",
+          "tr_id"
+        ],
+        "title": "NdtpUnitMapping"
+      },
+      "ObservedArrival": {
+        "properties": {
+          "tr_id": {
+            "type": "string",
+            "title": "Tr Id"
+          },
+          "stop_id": {
+            "type": "string",
+            "title": "Stop Id"
+          },
+          "actual_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Actual Time"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tr_id",
+          "stop_id",
+          "actual_time"
+        ],
+        "title": "ObservedArrival"
+      },
+      "PredictionContext": {
+        "properties": {
+          "tr_id": {
+            "type": "string",
+            "title": "Tr Id"
+          },
+          "target_stop_id": {
+            "type": "string",
+            "title": "Target Stop Id"
+          },
+          "current_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Current Time"
+          },
+          "target_time_begin": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Target Time Begin"
+          },
+          "cur_dev_s": {
+            "type": "number",
+            "title": "Cur Dev S"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tr_id",
+          "target_stop_id",
+          "current_time",
+          "target_time_begin",
+          "cur_dev_s"
+        ],
+        "title": "PredictionContext"
+      },
+      "RiskLevel": {
+        "type": "string",
+        "enum": [
+          "low",
+          "medium",
+          "high"
+        ],
+        "title": "RiskLevel"
+      },
+      "SchedulePoint": {
+        "properties": {
+          "tr_id": {
+            "type": "string",
+            "title": "Tr Id"
+          },
+          "stop_id": {
+            "type": "string",
+            "title": "Stop Id"
+          },
+          "time_begin": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Time Begin"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Address"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tr_id",
+          "stop_id",
+          "time_begin"
+        ],
+        "title": "SchedulePoint"
+      },
+      "TelemetryPoint": {
+        "properties": {
+          "packet_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Packet Id"
+          },
+          "tr_id": {
+            "type": "string",
+            "title": "Tr Id"
+          },
+          "unit_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Id"
+          },
+          "event_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Event Time"
+          },
+          "gps_time": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gps Time"
+          },
+          "receive_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Receive Time"
+          },
+          "speed": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed"
+          },
+          "heading": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heading"
+          },
+          "altitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Altitude"
+          },
+          "location_valid": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Location Valid"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "is_hist": {
+            "type": "boolean",
+            "title": "Is Hist",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "tr_id",
+          "event_time",
+          "receive_time"
+        ],
+        "title": "TelemetryPoint"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

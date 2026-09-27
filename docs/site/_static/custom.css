@@ -1,0 +1,7 @@
+div.body { max-width: 1050px; }
+div.document { width: min(1320px, 96%); }
+div.body h1, div.body h2, div.body h3 { font-family: system-ui, sans-serif; }
+div.body { font-family: system-ui, sans-serif; line-height: 1.6; }
+pre { overflow-x: auto; padding: 14px; border-radius: 6px; }
+table.docutils { width: 100%; }
+@media(max-width: 875px) { div.document { width: 100%; } }

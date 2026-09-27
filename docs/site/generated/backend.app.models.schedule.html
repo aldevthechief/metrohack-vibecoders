@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>backend.app.models.schedule &#8212; Metrohack — прогноз задержек транспорта</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=f6a572b4" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=57e88ba2" />
+    <script src="../_static/documentation_options.js?v=372fde1a"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=cd1d70c9"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="backend.app.models.telemetry" href="backend.app.models.telemetry.html" />
+    <link rel="prev" title="backend.app.models.incident" href="backend.app.models.incident.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Metrohack — прогноз задержек транспорта</a></h1>
+
+
+
+<p class="blurb">Код, API и руководство по проверке</p>
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">Запуск и проверка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Архитектура и модули</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">Данные, признаки и ограничения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">HTTP API и Swagger</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Справочник Python-кода</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backend.app.main.html">backend.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.dashboard.html">backend.app.models.dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.fleet.html">backend.app.models.fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.incident.html">backend.app.models.incident</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">backend.app.models.schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.models.telemetry.html">backend.app.models.telemetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.dashboard_service.html">backend.app.services.dashboard_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.feature_service.html">backend.app.services.features.feature_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.schedule_features.html">backend.app.services.features.schedule_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.spatial_features.html">backend.app.services.features.spatial_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.features.telemetry_features.html">backend.app.services.features.telemetry_features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.fleet_service.html">backend.app.services.fleet_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.historical_replay_service.html">backend.app.services.historical_replay_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.incident_service.html">backend.app.services.incident_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_emulator_service.html">backend.app.services.ndtp_emulator_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.ndtp_service.html">backend.app.services.ndtp_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_context_service.html">backend.app.services.prediction_context_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.prediction_service.html">backend.app.services.prediction_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.processing_service.html">backend.app.services.processing_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.schedule_service.html">backend.app.services.schedule_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.stop_arrival_service.html">backend.app.services.stop_arrival_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.telemetry_service.html">backend.app.services.telemetry_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.app.services.vehicle_state_service.html">backend.app.services.vehicle_state_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backend.scripts.configure_ndtp_demo.html">backend.scripts.configure_ndtp_demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.main.html">ml_service.app.main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.models.prediction.html">ml_service.app.models.prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.ml_risk.html">ml_service.app.services.ml_risk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.app.services.model_service.html">ml_service.app.services.model_service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml_service.research.vovchik.train_from_notebook.html">ml_service.research.vovchik.train_from_notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance.html">Сборка и публикация документации</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Справочник Python-кода</a><ul>
+      <li>Previous: <a href="backend.app.models.incident.html" title="предыдущая глава">backend.app.models.incident</a></li>
+      <li>Next: <a href="backend.app.models.telemetry.html" title="следующая глава">backend.app.models.telemetry</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="backend-app-models-schedule">
+<h1>backend.app.models.schedule<a class="headerlink" href="#backend-app-models-schedule" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Входные контракты расписания и прогнозного контекста. SchedulePoint задаёт остановку и плановое время; PredictionContext — момент прогноза, цель и текущее отклонение; ObservedArrival — фактическое прибытие.</p>
+<p><a class="reference download internal" download="" href="../_downloads/b0f29709326f914c97949f268126cbaf/schedule.py"><code class="xref download docutils literal notranslate"><span class="pre">Скачать</span> <span class="pre">исходный</span> <span class="pre">код</span></code></a></p>
+<section id="schedulepoint">
+<h2>SchedulePoint<a class="headerlink" href="#schedulepoint" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SchedulePoint</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Поля и константы класса:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">stop_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">time_begin</span><span class="p">:</span> <span class="n">datetime</span>
+<span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="predictioncontext">
+<h2>PredictionContext<a class="headerlink" href="#predictioncontext" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PredictionContext</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Поля и константы класса:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">target_stop_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">current_time</span><span class="p">:</span> <span class="n">datetime</span>
+<span class="n">target_time_begin</span><span class="p">:</span> <span class="n">datetime</span>
+<span class="n">cur_dev_s</span><span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
+</section>
+<section id="currentdeviation">
+<h2>CurrentDeviation<a class="headerlink" href="#currentdeviation" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CurrentDeviation</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Поля и константы класса:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">cur_dev_s</span><span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
+</section>
+<section id="observedarrival">
+<h2>ObservedArrival<a class="headerlink" href="#observedarrival" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ObservedArrival</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Поля и константы класса:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tr_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">stop_id</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">actual_time</span><span class="p">:</span> <span class="n">datetime</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
